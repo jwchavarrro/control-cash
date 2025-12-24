@@ -17,4 +17,3 @@ describe('cn utility', () => {
     expect(result).toBe('p-6')
   })
 })
-
