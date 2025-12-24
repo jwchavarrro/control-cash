@@ -120,4 +120,3 @@ jobs:
             echo "### ❌ Tests fallaron" >> $GITHUB_STEP_SUMMARY
             echo "Revisa los logs para más detalles" >> $GITHUB_STEP_SUMMARY
           fi
-
