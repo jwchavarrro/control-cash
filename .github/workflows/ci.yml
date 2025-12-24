@@ -96,7 +96,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: 🧪 Run tests
-        run: bun run test
+        run: bun run test:coverage
         env:
           CI: true
           NODE_ENV: test
