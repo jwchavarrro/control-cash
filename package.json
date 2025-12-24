@@ -11,7 +11,8 @@
     "format:check": "prettier --check .",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "quality-check": "bun run format:check && bun run lint && bun run test:coverage && bun run build"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.12",
