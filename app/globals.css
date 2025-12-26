@@ -91,7 +91,7 @@
 :root {
   /* Tipografía */
   --font-primary: 'montserrat', 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
-  --font-secondary: 'open-sans', 'Roboto', 'Ubuntu', Arial, sans-serif;
+  --font-secondary: 'league-spartan', 'Roboto', 'Ubuntu', Arial, sans-serif;
 
   /* Colores base */
   --background: oklch(1 0 0);
