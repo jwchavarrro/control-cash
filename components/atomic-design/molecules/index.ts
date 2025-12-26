@@ -3,4 +3,4 @@
  * Componentes compuestos que usan atoms
  */
 
-export { Card } from "./card";
+export { Card } from './card'

@@ -6,4 +6,4 @@
  * - molecules/: Componentes compuestos que usan atoms
  */
 
-export * from "./atoms";
+export * from './atoms'

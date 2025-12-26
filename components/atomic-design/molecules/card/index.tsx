@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react'
 import {
   Card as BaseCard,
   CardHeader,
@@ -6,10 +6,9 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-  CardAction,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Title, Text } from "@/components/atomic-design/atoms";
+} from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Title, Text } from '@/components/atomic-design/atoms'
 
 /**
  * Molecule: Card
@@ -18,14 +17,14 @@ import { Title, Text } from "@/components/atomic-design/atoms";
  */
 
 interface CardProps extends React.ComponentProps<typeof BaseCard> {
-  readonly title?: string;
-  readonly description?: string;
-  readonly children?: React.ReactNode;
-  readonly buttonText?: string;
-  readonly onButtonClick?: () => void;
-  readonly buttonVariant?: React.ComponentProps<typeof Button>["variant"];
-  readonly showHeaderAction?: boolean;
-  readonly headerAction?: React.ReactNode;
+  readonly title?: string
+  readonly description?: string
+  readonly children?: React.ReactNode
+  readonly buttonText?: string
+  readonly onButtonClick?: () => void
+  readonly buttonVariant?: React.ComponentProps<typeof Button>['variant']
+  readonly showHeaderAction?: boolean
+  readonly headerAction?: React.ReactNode
 }
 
 export function Card({
@@ -34,7 +33,7 @@ export function Card({
   children,
   buttonText,
   onButtonClick,
-  buttonVariant = "default",
+  buttonVariant = 'default',
   showHeaderAction = false,
   headerAction,
   className,
@@ -57,7 +56,7 @@ export function Card({
             </CardDescription>
           )}
           {showHeaderAction && headerAction && (
-            <CardAction>{headerAction}</CardAction>
+            <div className="ml-auto">{headerAction}</div>
           )}
         </CardHeader>
       )}
@@ -70,5 +69,5 @@ export function Card({
         </CardFooter>
       )}
     </BaseCard>
-  );
+  )
 }

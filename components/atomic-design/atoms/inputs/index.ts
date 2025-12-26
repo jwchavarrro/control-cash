@@ -3,4 +3,4 @@
  * @description Archivo de índice para los componentes de inputs.
  */
 
-export * from "./input-text";
+export * from './input-text'
