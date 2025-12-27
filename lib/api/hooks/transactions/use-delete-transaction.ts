@@ -1,30 +1,29 @@
 /**
- * Hook para crear una transacción
+ * Hook para eliminar una transacción
  * Mutation porque modifica datos
  *
- * @module lib/api/hooks/use-create-transaction
+ * @module lib/api/hooks/transactions/use-delete-transaction
  */
 
 'use client'
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { transactionService } from '../services'
-import { queryKeys } from './query-keys'
-import type { Transaction, TransactionInput } from '../types'
+import { transactionService } from '../../services'
+import { queryKeys } from '../query-keys'
 
 /**
- * Hook para crear una nueva transacción
+ * Hook para eliminar una transacción
  * Invalida automáticamente las queries relacionadas al tener éxito
  *
- * @returns Mutation para crear transacción
+ * @returns Mutation para eliminar transacción
  */
-export function useCreateTransaction() {
+export function useDeleteTransaction() {
   const queryClient = useQueryClient()
 
-  return useMutation<Transaction, Error, TransactionInput>({
-    mutationFn: transactionService.create,
+  return useMutation<void, Error, string>({
+    mutationFn: transactionService.delete,
     onSuccess: () => {
-      // Invalidar queries de transacciones para refrescar la lista
+      // Invalidar queries de transacciones
       queryClient.invalidateQueries({
         queryKey: queryKeys.transactions.lists(),
       })
@@ -39,3 +38,4 @@ export function useCreateTransaction() {
     },
   })
 }
+

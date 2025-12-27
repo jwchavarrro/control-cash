@@ -1,31 +1,33 @@
 /**
- * Hook para registro
- * Mutation porque crea un nuevo usuario
+ * Hook para login
+ * Mutation porque modifica el estado (crea sesión)
  *
- * @module lib/api/hooks/use-register
+ * @module lib/api/hooks/users/use-login
  */
 
 'use client'
 
 import { useMutation } from '@tanstack/react-query'
-import { authService } from '../services'
-import type { LoginRequest, LoginResponse } from '../types'
+import { authService } from '../../services'
+import type { LoginRequest, LoginResponse } from '../../types'
 
 /**
- * Hook para registrar nuevo usuario
+ * Hook para iniciar sesión
  * Guarda el token en localStorage automáticamente al tener éxito
  *
- * @returns Mutation para registro
+ * @returns Mutation para login
  */
-export function useRegister() {
+export function useLogin() {
   return useMutation<LoginResponse, Error, LoginRequest>({
-    mutationFn: authService.register,
+    mutationFn: authService.login,
     onSuccess: data => {
       // Guardar token en localStorage
       if (globalThis.window !== undefined) {
         globalThis.localStorage.setItem('token', data.token)
+        // Guardar userId por defecto (en producción vendría del response)
         globalThis.localStorage.setItem('userId', '1')
       }
     },
   })
 }
+

@@ -2,15 +2,15 @@
  * Hook para actualizar una transacción
  * Mutation porque modifica datos
  *
- * @module lib/api/hooks/use-update-transaction
+ * @module lib/api/hooks/transactions/use-update-transaction
  */
 
 'use client'
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { transactionService } from '../services'
-import { queryKeys } from './query-keys'
-import type { Transaction, TransactionInput } from '../types'
+import { transactionService } from '../../services'
+import { queryKeys } from '../query-keys'
+import type { Transaction, TransactionInput } from '../../types'
 
 /**
  * Hook para actualizar una transacción existente
@@ -46,3 +46,4 @@ export function useUpdateTransaction() {
     },
   })
 }
+

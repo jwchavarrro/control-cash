@@ -2,15 +2,15 @@
  * Hook para obtener todas las transacciones
  * Query porque solo lee datos
  *
- * @module lib/api/hooks/use-transactions
+ * @module lib/api/hooks/transactions/use-transactions
  */
 
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { transactionService } from '../services'
-import { queryKeys } from './query-keys'
-import type { Transaction, TransactionFilters } from '../types'
+import { transactionService } from '../../services'
+import { queryKeys } from '../query-keys'
+import type { Transaction, TransactionFilters } from '../../types'
 
 /**
  * Hook para obtener todas las transacciones
@@ -27,3 +27,4 @@ export function useTransactions(filters?: TransactionFilters, enabled = true) {
     staleTime: 30 * 1000, // 30 segundos
   })
 }
+

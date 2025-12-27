@@ -2,15 +2,15 @@
  * Hook para obtener resumen del dashboard
  * Query porque solo lee datos (calcula en el cliente)
  *
- * @module lib/api/hooks/use-dashboard-summary
+ * @module lib/api/hooks/transactions/use-dashboard-summary
  */
 
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { transactionService } from '../services'
-import { queryKeys } from './query-keys'
-import type { DashboardSummary } from '../types'
+import { transactionService } from '../../services'
+import { queryKeys } from '../query-keys'
+import type { DashboardSummary } from '../../types'
 
 /**
  * Hook para obtener resumen financiero del dashboard
@@ -49,3 +49,4 @@ export function useDashboardSummary(userId: string) {
     staleTime: 30 * 1000, // 30 segundos
   })
 }
+
