@@ -9,6 +9,7 @@
 
 import { useMutation } from '@tanstack/react-query'
 import { authService } from '@/lib/api/services'
+import { saveSession } from '@/lib/auth'
 import type { LoginRequest, LoginResponse } from '@/lib/api/types'
 
 /**
@@ -21,12 +22,8 @@ export function useLogin() {
   return useMutation<LoginResponse, Error, LoginRequest>({
     mutationFn: authService.login,
     onSuccess: data => {
-      // Guardar token en localStorage
-      if (globalThis.window !== undefined) {
-        globalThis.localStorage.setItem('token', data.token)
-        // Guardar userId por defecto (en producción vendría del response)
-        globalThis.localStorage.setItem('userId', '1')
-      }
+      // Guardar sesión usando función consolidada
+      saveSession(data.token, '1') // userId por defecto
     },
   })
 }

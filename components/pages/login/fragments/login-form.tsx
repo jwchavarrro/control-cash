@@ -1,5 +1,6 @@
 /**
  * Fragmento de formulario de login
+ * Estructura básica - la lógica se implementará después
  *
  * @module components/pages/login/fragments/login-form
  */
