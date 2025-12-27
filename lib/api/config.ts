@@ -11,12 +11,10 @@ if (!MOCKAPI_PROJECT_ID) {
   console.warn('⚠️ NEXT_PUBLIC_MOCKAPI_PROJECT_ID no está configurada')
 }
 
-/**
- * Configuración de endpoints para las APIs externas
- */
 export const API_CONFIG = {
   /**
-   * Configuración de MockAPI para transacciones y usuarios
+   * @name mockapi
+   * @description Configuración de MockAPI para transacciones y usuarios
    */
   mockapi: {
     baseUrl: `https://${MOCKAPI_PROJECT_ID}.mockapi.io/api/v1`,
@@ -26,7 +24,8 @@ export const API_CONFIG = {
     },
   },
   /**
-   * Configuración de ReqRes para autenticación
+   * @name reqres
+   * @description Configuración de ReqRes para autenticación
    */
   reqres: {
     baseUrl: 'https://reqres.in/api',
