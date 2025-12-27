@@ -17,8 +17,10 @@ export const KEYWORDS = {
         MASTER: {
           TITLE: 'Master',
           PRODUCTS: 'Products',
-          TRANSACTIONS: 'Transactions',
           USERS: 'Users',
+        },
+        TRANSACTIONS: {
+          TITLE: 'Transactions',
         },
       },
     },

@@ -16,7 +16,7 @@ import { KEYWORDS, ROUTES_PAGES } from '@/config'
 export const NAVIGATION_NAV_MAIN = {
   NAV_MAIN: [
     {
-      title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.DASHBOARD,
+      title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.TITLE,
       url: ROUTES_PAGES.DASHBOARD,
       icon: SquareTerminal,
       isActive: true,
@@ -32,17 +32,10 @@ export const NAVIGATION_NAV_MAIN = {
       ],
     },
     {
-      title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.DASHBOARD,
-      url: ROUTES_PAGES.DASHBOARD,
+      title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.TRANSACTIONS.TITLE,
+      url: ROUTES_PAGES.TRANSACTIONS.LIST,
       icon: SquareTerminal,
       isActive: true,
-      items: [
-        {
-          title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.TRANSACTIONS,
-          url: ROUTES_PAGES.TRANSACTIONS.LIST,
-        },
-      
-      ],
     },
   ],
 }
