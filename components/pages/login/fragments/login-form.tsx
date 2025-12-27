@@ -30,7 +30,7 @@ export function LoginForm({
     <form className={cn('flex flex-col gap-6', className)} {...props}>
       <FieldGroup>
         <header className="flex flex-col items-center gap-1 text-center">
-          <Title level={1}>Login to your account</Title>
+          <Title level={1} className='text-2xl font-bold'>Login to your account</Title>
           <Text>Enter your email below to login to your account</Text>
         </header>
         {/* Email */}
@@ -48,7 +48,7 @@ export function LoginForm({
             </FieldLabel>
             <Link
               href="#"
-              className="ml-auto text-sm underline-offset-4 hover:underline"
+              className="ml-auto text-sm underline-offset-4 hover:underline hover:text-primary hover:underline-primary"
             >
               <Text>Forgot your password?</Text>
             </Link>
@@ -71,7 +71,7 @@ export function LoginForm({
           <FieldLabel asChild>
             <Text>
               Don&apos;t have an account?{' '}
-              <Link href="#" className="underline underline-offset-4">
+              <Link href="#" className="underline underline-offset-4 hover:text-primary hover:underline-primary">
                 Sign up
               </Link>
             </Text>
