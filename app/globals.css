@@ -2,7 +2,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
 /* Importaciones de fuentes */
 /* Títulos */
 @font-face {
@@ -100,7 +99,7 @@
   --primary: oklch(31.58% 0.101 254.09);
   --primary-foreground: oklch(0.985 0 0);
   --primary-80: oklch(45.75% 0.079 250.49);
-  --primary-70: oklch(59.90% 0.057 249.65);
+  --primary-70: oklch(59.9% 0.057 249.65);
   --primary-60: oklch(73.88% 0.037 248.32);
   --primary-50: oklch(87.14% 0.018 248.03);
   --primary-40: oklch(93.47% 0.009 247.92);
@@ -112,12 +111,12 @@
   --secondary-60: oklch(0.8476 0.0582 248.52);
   --secondary-50: oklch(0.9239 0.0277 248.13);
 
-  --gray: oklch(32.11% 0.000 0);
+  --gray: oklch(32.11% 0 0);
   --gray-foreground: oklch(1 0 0);
-  --gray-80: oklch(51.03% 0.000 0);
-  --gray-70: oklch(68.30% 0.000 0);
-  --gray-60: oklch(84.52% 0.000 0);
-  --gray-50: oklch(96.12% 0.000 0);
+  --gray-80: oklch(51.03% 0 0);
+  --gray-70: oklch(68.3% 0 0);
+  --gray-60: oklch(84.52% 0 0);
+  --gray-50: oklch(96.12% 0 0);
 
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
