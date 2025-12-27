@@ -30,15 +30,15 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   items: SidebarItem[]
 }
 
-export function AppSidebar({ ...props }: Readonly<AppSidebarProps>) {
+export function AppSidebar({ items }: Readonly<AppSidebarProps>) {
 
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon">
       <SidebarHeader>
         <Header />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={[]} />
+        <NavMain items={items} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={{ name: '', email: '', avatar: '' }} />

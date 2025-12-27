@@ -26,13 +26,22 @@ export const NAVIGATION_NAV_MAIN = {
           url: ROUTES_PAGES.MASTER.PRODUCTS.LIST,
         },
         {
-          title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.TRANSACTIONS,
-          url: ROUTES_PAGES.TRANSACTIONS.LIST,
-        },
-        {
           title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.USERS,
           url: ROUTES_PAGES.MASTER.USERS.LIST,
         },
+      ],
+    },
+    {
+      title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.DASHBOARD,
+      url: ROUTES_PAGES.DASHBOARD,
+      icon: SquareTerminal,
+      isActive: true,
+      items: [
+        {
+          title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.TRANSACTIONS,
+          url: ROUTES_PAGES.TRANSACTIONS.LIST,
+        },
+      
       ],
     },
   ],
