@@ -34,11 +34,8 @@ interface NavUserProps {
   }
 }
 
-export function NavUser({
-  user,
-}: Readonly<NavUserProps>) {
-
-    // Hooks
+export function NavUser({ user }: Readonly<NavUserProps>) {
+  // Hooks
   const { isMobile } = useSidebar()
 
   return (

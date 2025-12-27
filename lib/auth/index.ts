@@ -58,4 +58,3 @@ export function saveSession(token: string, userId?: string): void {
     globalThis.localStorage.setItem('userId', userId)
   }
 }
-

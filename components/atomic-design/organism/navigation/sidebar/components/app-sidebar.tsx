@@ -8,12 +8,7 @@
 'use client'
 
 import * as React from 'react'
-import {
-  BookOpen,
-  Bot,
-  Settings2,
-  SquareTerminal,
-} from 'lucide-react'
+import { BookOpen, Bot, Settings2, SquareTerminal } from 'lucide-react'
 
 import {
   Sidebar,
@@ -24,7 +19,10 @@ import {
 } from '@/components/ui/sidebar'
 
 // Import of components custom
-import { NavMain, NavUser } from '@/components/atomic-design/organism/navigation/sidebar/fragments'
+import {
+  NavMain,
+  NavUser,
+} from '@/components/atomic-design/organism/navigation/sidebar/fragments'
 
 // This is sample data.
 const data = {
@@ -132,7 +130,10 @@ export function AppSidebar({ ...props }: Readonly<AppSidebarProps>) {
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
-      <SidebarFooter> <NavUser user={data.user} /></SidebarFooter>
+      <SidebarFooter>
+        {' '}
+        <NavUser user={data.user} />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )

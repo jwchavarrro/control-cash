@@ -31,9 +31,7 @@ interface NavMainProps {
   }[]
 }
 
-export function NavMain({
-  items,
-}: Readonly<NavMainProps>) {
+export function NavMain({ items }: Readonly<NavMainProps>) {
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Menu</SidebarGroupLabel>
