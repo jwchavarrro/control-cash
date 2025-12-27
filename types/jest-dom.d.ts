@@ -1,6 +1,6 @@
 /**
  * Tipos globales para jest-dom matchers
- * 
+ *
  * @module types/jest-dom
  */
 
@@ -19,4 +19,3 @@ declare global {
 }
 
 export {}
-

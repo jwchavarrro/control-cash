@@ -5,6 +5,9 @@
  * @returns {JSX.Element} Layout de la dashboard
  */
 
+// Import of components custom
+import { Sidebar } from '@/components/atomic-design/organism'
+
 interface DashboardLayoutProps {
   children: React.ReactNode
 }
@@ -12,5 +15,5 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({
   children,
 }: Readonly<DashboardLayoutProps>) {
-  return <div>{children}</div>
+  return <Sidebar>{children}</Sidebar>
 }
