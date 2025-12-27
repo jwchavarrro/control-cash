@@ -4,7 +4,6 @@
  * @module app/login/page
  */
 
-
 import Link from 'next/link'
 import { HandCoinsIcon } from 'lucide-react'
 
@@ -17,12 +16,15 @@ export default function LoginPage() {
       {/* Column 1 - Login Form */}
       <div className="relative flex flex-col gap-4 p-6 md:p-10">
         {/* Background Image */}
-        <div className="absolute bottom-0 right-0 -z-10">
-          <HandCoinsIcon className="size-48 md:size-72 text-muted-foreground/10" />
+        <div className="absolute right-0 bottom-0 -z-10">
+          <HandCoinsIcon className="text-muted-foreground/10 size-48 md:size-72" />
         </div>
 
         <header className="flex justify-center gap-2 md:justify-start">
-          <Link href="#" className="flex items-center gap-2 font-bold font-title">
+          <Link
+            href="#"
+            className="font-title flex items-center gap-2 font-bold"
+          >
             <HandCoinsIcon className="size-6" />
             ctrlcash
           </Link>
@@ -33,11 +35,9 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
-      
+
       {/* Column 2 - Background Image */}
-      <div className="bg-muted relative hidden lg:block">
-        
-      </div>
+      <div className="bg-muted relative hidden lg:block"></div>
     </div>
   )
 }
