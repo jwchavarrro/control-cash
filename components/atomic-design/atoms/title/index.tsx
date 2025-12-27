@@ -13,11 +13,8 @@ import { cn } from '@/lib/utils'
  */
 
 interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  /** Nivel del título */
   readonly level?: 1 | 2 | 3 | 4
-  /** Variante del título */
   readonly variant?: 'default' | 'accent' | 'gradient'
-  /** Color personalizado */
   readonly color?: 'default' | 'primary' | 'secondary' | 'accent'
 }
 
