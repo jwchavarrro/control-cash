@@ -10,11 +10,17 @@
  * Revisa si existe un token en localStorage
  *
  * @returns true si el usuario está autenticado, false en caso contrario
+ * 
+ * TODO: Descomentar la validación real cuando implementes login
  */
 export function isAuthenticated(): boolean {
-  if (globalThis.window === undefined) return false
-  const token = globalThis.localStorage.getItem('token')
-  return !!token
+  // TEMPORAL: Saltar validación mientras maquetas
+  return true
+  
+  // TODO: Descomentar cuando implementes login
+  // if (globalThis.window === undefined) return false
+  // const token = globalThis.localStorage.getItem('token')
+  // return !!token
 }
 
 /**
@@ -31,10 +37,12 @@ export function getToken(): string | null {
  * Obtener el ID del usuario
  *
  * @returns UserId si existe, null en caso contrario
+ * 
+ * TODO: Quitar el valor por defecto cuando implementes login
  */
 export function getUserId(): string | null {
-  if (globalThis.window === undefined) return null
-  return globalThis.localStorage.getItem('userId')
+  if (globalThis.window === undefined) return '1' // TEMPORAL: para maquetado
+  return globalThis.localStorage.getItem('userId') || '1' // TEMPORAL: '1' por defecto
 }
 
 /**

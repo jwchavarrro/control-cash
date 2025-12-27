@@ -9,14 +9,8 @@
 
 import * as React from 'react'
 import {
-  AudioWaveform,
   BookOpen,
   Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
   Settings2,
   SquareTerminal,
 } from 'lucide-react'
@@ -29,6 +23,9 @@ import {
   SidebarRail,
 } from '@/components/ui/sidebar'
 
+// Import of components custom
+import { NavMain, NavUser } from '@/components/atomic-design/organism/navigation/sidebar/fragments'
+
 // This is sample data.
 const data = {
   user: {
@@ -36,23 +33,6 @@ const data = {
     email: 'm@example.com',
     avatar: '/avatars/shadcn.jpg',
   },
-  teams: [
-    {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
-    },
-    {
-      name: 'Evil Corp.',
-      logo: Command,
-      plan: 'Free',
-    },
-  ],
   navMain: [
     {
       title: 'Playground',
@@ -140,36 +120,19 @@ const data = {
       ],
     },
   ],
-  projects: [
-    {
-      name: 'Design Engineering',
-      url: '#',
-      icon: Frame,
-    },
-    {
-      name: 'Sales & Marketing',
-      url: '#',
-      icon: PieChart,
-    },
-    {
-      name: 'Travel',
-      url: '#',
-      icon: Map,
-    },
-  ],
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {}
 
-export function AppSidebar({ ...props }: AppSidebarProps) {
+export function AppSidebar({ ...props }: Readonly<AppSidebarProps>) {
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>{/* <TeamSwitcher teams={data.teams} /> */}</SidebarHeader>
+      <SidebarHeader></SidebarHeader>
       <SidebarContent>
-        {/*  <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} /> */}
+        <NavMain items={data.navMain} />
       </SidebarContent>
-      <SidebarFooter>{/*  <NavUser user={data.user} /> */}</SidebarFooter>
+      <SidebarFooter> <NavUser user={data.user} /></SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )

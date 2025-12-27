@@ -6,7 +6,7 @@ import {
 import { Separator } from '@/components/ui/separator'
 
 // Import of components custom
-import { AppSidebar } from './components'
+import { AppSidebar } from '@/components/atomic-design/organism/navigation/sidebar/components'
 
 interface SidebarProps extends React.ComponentProps<typeof SidebarProvider> {
   children: React.ReactNode
