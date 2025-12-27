@@ -5,8 +5,20 @@
  * @module lib/api/services/transactions
  */
 
-import * from './get-all.transaction'
-import * from './get-by-id.transaction'
-import * from './create.transaction'
-import * from './update.transaction'
-import * from './delete.transaction'
+import { getAllTransactions } from './get-all.transaction'
+import { getTransactionById } from './get-by-id.transaction'
+import { createTransaction } from './create.transaction'
+import { updateTransaction } from './update.transaction'
+import { deleteTransaction } from './delete.transaction'
+
+/**
+ * Servicio completo de transacciones
+ * Expone todos los métodos para operaciones CRUD
+ */
+export const transactionService = {
+  getAll: getAllTransactions,
+  getById: getTransactionById,
+  create: createTransaction,
+  update: updateTransaction,
+  delete: deleteTransaction,
+}

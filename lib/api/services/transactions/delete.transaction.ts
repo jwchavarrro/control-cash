@@ -4,8 +4,8 @@
  * @module lib/api/services/transactions/delete.transaction
  */
 
-import { API_CONFIG } from '../../config'
-import { ApiError } from '../api-error'
+import { API_CONFIG } from '@/lib/api/config'
+import { ApiError } from '@/lib/api/services/api-error'
 
 /**
  * Eliminar una transacción

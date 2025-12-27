@@ -4,9 +4,9 @@
  * @module lib/api/services/transactions/get-all.transaction
  */
 
-import { API_CONFIG } from '../../config'
-import { handleResponse } from '../api-error'
-import type { Transaction, TransactionFilters } from '../../types'
+import { API_CONFIG } from '@/lib/api/config'
+import { handleResponse } from '@/lib/api/services/api-error'
+import type { Transaction, TransactionFilters } from '@/lib/api/types'
 
 /**
  * Obtener todas las transacciones con filtros opcionales

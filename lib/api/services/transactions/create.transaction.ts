@@ -4,9 +4,9 @@
  * @module lib/api/services/transactions/create.transaction
  */
 
-import { API_CONFIG } from '../../config'
-import { handleResponse } from '../api-error'
-import type { Transaction, TransactionInput } from '../../types'
+import { API_CONFIG } from '@/lib/api/config'
+import { handleResponse } from '@/lib/api/services/api-error'
+import type { Transaction, TransactionInput } from '@/lib/api/types'
 
 /**
  * Crear una nueva transacción

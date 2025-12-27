@@ -8,8 +8,8 @@
 'use client'
 
 import { useMutation } from '@tanstack/react-query'
-import { authService } from '../../services'
-import type { LoginRequest, LoginResponse } from '../../types'
+import { authService } from '@/lib/api/services'
+import type { LoginRequest, LoginResponse } from '@/lib/api/types'
 
 /**
  * Hook para iniciar sesión

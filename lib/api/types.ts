@@ -4,6 +4,9 @@
  * @module lib/api/types
  */
 
+/**
+ * Transacciones
+ */
 export type TransactionType = 'income' | 'expense'
 
 export interface Transaction {

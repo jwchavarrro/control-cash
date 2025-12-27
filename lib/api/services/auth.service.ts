@@ -4,9 +4,9 @@
  * @module lib/api/services/auth.service
  */
 
-import { API_CONFIG } from '../config'
-import { handleResponse } from './api-error'
-import type { LoginRequest, LoginResponse } from '../types'
+import { API_CONFIG } from '@/lib/api/config'
+import { handleResponse } from '@/lib/api/services/api-error'
+import type { LoginRequest, LoginResponse } from '@/lib/api/types'
 
 /**
  * Servicios para autenticación usando ReqRes API

@@ -1,5 +1,5 @@
 /**
- * Clase de error personalizada para errores de API
+ * Errores de API
  *
  * @module lib/api/services/api-error
  */

@@ -5,7 +5,7 @@
  * @module lib/api/hooks/query-keys
  */
 
-import type { TransactionFilters } from '../types'
+import type { TransactionFilters } from '@/lib/api/types'
 
 export const queryKeys = {
   transactions: {

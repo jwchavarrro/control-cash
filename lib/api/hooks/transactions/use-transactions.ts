@@ -8,9 +8,9 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { transactionService } from '../../services'
-import { queryKeys } from '../query-keys'
-import type { Transaction, TransactionFilters } from '../../types'
+import { transactionService } from '@/lib/api/services'
+import { queryKeys } from '@/lib/api/hooks/query-keys'
+import type { Transaction, TransactionFilters } from '@/lib/api/types'
 
 /**
  * Hook para obtener todas las transacciones

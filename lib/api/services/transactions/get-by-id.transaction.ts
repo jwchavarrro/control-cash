@@ -4,9 +4,9 @@
  * @module lib/api/services/transactions/get-by-id.transaction
  */
 
-import { API_CONFIG } from '../../config'
-import { handleResponse } from '../api-error'
-import type { Transaction } from '../../types'
+import { API_CONFIG } from '@/lib/api/config'
+import { handleResponse } from '@/lib/api/services/api-error'
+import type { Transaction } from '@/lib/api/types'
 
 /**
  * Obtener una transacción por ID

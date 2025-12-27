@@ -8,9 +8,9 @@
 'use client'
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { transactionService } from '../../services'
-import { queryKeys } from '../query-keys'
-import type { Transaction, TransactionInput } from '../../types'
+import { transactionService } from '@/lib/api/services'
+import { queryKeys } from '@/lib/api/hooks/query-keys'
+import type { Transaction, TransactionInput } from '@/lib/api/types'
 
 /**
  * Hook para actualizar una transacción existente

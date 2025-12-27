@@ -8,9 +8,9 @@
 'use client'
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { transactionService } from '../../services'
-import { queryKeys } from '../query-keys'
-import type { Transaction, TransactionInput } from '../../types'
+import { transactionService } from '@/lib/api/services'
+import { queryKeys } from '@/lib/api/hooks/query-keys'
+import type { Transaction, TransactionInput } from '@/lib/api/types'
 
 /**
  * Hook para crear una nueva transacción
@@ -30,9 +30,9 @@ export function useCreateTransaction() {
       })
       // Invalidar resumen del dashboard
       const userId =
-        (globalThis.window !== undefined
-          ? globalThis.localStorage.getItem('userId')
-          : null) || '1'
+        globalThis.window === undefined
+          ? '1'
+          : globalThis.localStorage.getItem('userId') || '1'
       queryClient.invalidateQueries({
         queryKey: queryKeys.dashboard.summary(userId),
       })
