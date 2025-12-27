@@ -1,11 +1,13 @@
 /**
- * Página de dashboard
+ * Página principal del dashboard
  *
- * @returns {JSX.Element} Página de dashboard
+ * @module app/dashboard/page
  */
- // Import of components custom
-import DashboardLayout from './layout'
 
 export default function DashboardPage() {
-  return <DashboardLayout>Dashboard</DashboardLayout>
+  return (
+    <div>
+      dashboard page
+    </div>
+  )
 }

@@ -15,6 +15,7 @@
     "quality-check": "bun run format:check && bun run lint && bun run test:coverage && bun run build"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-label": "^2.1.8",
@@ -33,6 +34,7 @@
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-hook-form": "^7.69.0",
     "tailwind-merge": "^3.4.0",
     "zod": "^4.2.1"
   },
