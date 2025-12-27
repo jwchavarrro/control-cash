@@ -12,6 +12,9 @@
 import { AuthCheck } from '@/components/auth/auth-check'
 import { Sidebar } from '@/components/atomic-design/organism'
 
+// Import of utilities
+import { NAVIGATION_NAV_MAIN } from '@/components/pages/dashboard'
+
 interface DashboardLayoutProps {
   children: React.ReactNode
 }
@@ -21,7 +24,7 @@ export default function DashboardLayout({
 }: Readonly<DashboardLayoutProps>) {
   return (
     <AuthCheck>
-      <Sidebar>{children}</Sidebar>
+      <Sidebar items={NAVIGATION_NAV_MAIN.NAV_MAIN}>{children}</Sidebar>
     </AuthCheck>
   )
 }

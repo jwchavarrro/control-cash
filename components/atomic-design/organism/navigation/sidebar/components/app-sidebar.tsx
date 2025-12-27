@@ -7,8 +7,6 @@
 
 'use client'
 
-import {  SquareTerminal } from 'lucide-react'
-
 import {
   Sidebar,
   SidebarHeader,
@@ -25,7 +23,8 @@ import {
 } from '@/components/atomic-design/organism/navigation/sidebar/fragments'
 
 // Import of utilities
-import { KEYWORDS, ROUTES_PAGES } from '@/config'
+import { SidebarItem } from '../utils'
+
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   items: SidebarItem[]
@@ -39,10 +38,10 @@ export function AppSidebar({ ...props }: Readonly<AppSidebarProps>) {
         <Header />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={[]} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={{ name: '', email: '', avatar: '' }} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

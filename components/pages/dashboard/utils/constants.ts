@@ -9,9 +9,12 @@ import { SquareTerminal } from 'lucide-react'
 // Import of utilities
 import { KEYWORDS, ROUTES_PAGES } from '@/config'
 
-
-export const NAVEGATION_NAV_MAIN = {
-  navMain: [
+/**
+ * @constant NAVIGATION_NAV_MAIN
+ * @description Navegación del sidebar
+ */
+export const NAVIGATION_NAV_MAIN = {
+  NAV_MAIN: [
     {
       title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.DASHBOARD,
       url: ROUTES_PAGES.DASHBOARD,
