@@ -126,12 +126,13 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {}
 export function AppSidebar({ ...props }: Readonly<AppSidebarProps>) {
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader></SidebarHeader>
+      <SidebarHeader>
+        fdf
+      </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        {' '}
         <NavUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />

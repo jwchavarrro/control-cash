@@ -10,11 +10,18 @@
  * Revisa si existe un token en localStorage
  *
  * @returns true si el usuario está autenticado, false en caso contrario
+ * 
+ * TEMPORAL: Devuelve true para permitir acceso al dashboard mientras maquetas
+ * TODO: Restaurar validación real cuando implementes login
  */
 export function isAuthenticated(): boolean {
-  if (globalThis.window === undefined) return false
-  const token = globalThis.localStorage.getItem('token')
-  return !!token
+  // TEMPORAL: Permitir acceso sin validación
+  return true
+  
+  // TODO: Descomentar cuando implementes login
+  // if (globalThis.window === undefined) return false
+  // const token = globalThis.localStorage.getItem('token')
+  // return !!token
 }
 
 /**
@@ -29,10 +36,18 @@ export function getToken(): string | null {
 /**
  * Obtener el ID del usuario
  * @returns UserId si existe, null en caso contrario
+ * 
+ * TEMPORAL: Devuelve '1' por defecto para que los hooks funcionen mientras maquetas
+ * TODO: Restaurar validación real cuando implementes login
  */
 export function getUserId(): string | null {
-  if (globalThis.window === undefined) return null
-  return globalThis.localStorage.getItem('userId')
+  // TEMPORAL: Devolver '1' por defecto para maquetado
+  if (globalThis.window === undefined) return '1'
+  return globalThis.localStorage.getItem('userId') || '1'
+  
+  // TODO: Descomentar cuando implementes login
+  // if (globalThis.window === undefined) return null
+  // return globalThis.localStorage.getItem('userId')
 }
 
 /**
