@@ -49,4 +49,3 @@ export function useDashboardSummary(userId: string) {
     staleTime: 30 * 1000, // 30 segundos
   })
 }
-

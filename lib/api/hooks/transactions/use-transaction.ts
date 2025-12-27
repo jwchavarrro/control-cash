@@ -26,4 +26,3 @@ export function useTransaction(id: string, enabled = true) {
     enabled: enabled && !!id,
   })
 }
-

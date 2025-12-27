@@ -27,4 +27,3 @@ export function useTransactions(filters?: TransactionFilters, enabled = true) {
     staleTime: 30 * 1000, // 30 segundos
   })
 }
-
