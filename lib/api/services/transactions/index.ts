@@ -22,6 +22,3 @@ export const transactionService = {
   update: updateTransaction,
   delete: deleteTransaction,
 }
-
-
-

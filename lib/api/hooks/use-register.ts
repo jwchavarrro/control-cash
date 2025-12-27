@@ -20,7 +20,7 @@ import type { LoginRequest, LoginResponse } from '../types'
 export function useRegister() {
   return useMutation<LoginResponse, Error, LoginRequest>({
     mutationFn: authService.register,
-    onSuccess: (data) => {
+    onSuccess: data => {
       // Guardar token en localStorage
       if (globalThis.window !== undefined) {
         globalThis.localStorage.setItem('token', data.token)
@@ -29,4 +29,3 @@ export function useRegister() {
     },
   })
 }
-

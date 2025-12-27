@@ -20,6 +20,3 @@ export const queryKeys = {
     summary: (userId: string) => ['dashboard', 'summary', userId] as const,
   },
 } as const
-
-
-

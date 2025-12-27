@@ -19,10 +19,7 @@ import type { Transaction, TransactionFilters } from '../types'
  * @param enabled - Si la query debe ejecutarse (útil para dependencias)
  * @returns Query con las transacciones
  */
-export function useTransactions(
-  filters?: TransactionFilters,
-  enabled = true
-) {
+export function useTransactions(filters?: TransactionFilters, enabled = true) {
   return useQuery<Transaction[], Error>({
     queryKey: queryKeys.transactions.list(filters),
     queryFn: () => transactionService.getAll(filters),
@@ -30,6 +27,3 @@ export function useTransactions(
     staleTime: 30 * 1000, // 30 segundos
   })
 }
-
-
-

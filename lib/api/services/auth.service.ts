@@ -50,6 +50,3 @@ export const authService = {
     return handleResponse<LoginResponse>(response)
   },
 }
-
-
-

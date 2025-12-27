@@ -37,6 +37,3 @@ export async function handleResponse<T>(response: Response): Promise<T> {
   }
   return response.json()
 }
-
-
-

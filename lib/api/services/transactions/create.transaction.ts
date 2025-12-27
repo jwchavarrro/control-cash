@@ -28,6 +28,3 @@ export async function createTransaction(
 
   return handleResponse<Transaction>(response)
 }
-
-
-
