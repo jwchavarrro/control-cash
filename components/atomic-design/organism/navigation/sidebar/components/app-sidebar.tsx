@@ -12,14 +12,15 @@ import { BookOpen, Bot, Settings2, SquareTerminal } from 'lucide-react'
 
 import {
   Sidebar,
+  SidebarHeader,
   SidebarContent,
   SidebarFooter,
-  SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar'
 
 // Import of components custom
 import {
+  Header,
   NavMain,
   NavUser,
 } from '@/components/atomic-design/organism/navigation/sidebar/fragments'
@@ -124,10 +125,11 @@ const data = {
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {}
 
 export function AppSidebar({ ...props }: Readonly<AppSidebarProps>) {
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        fdf
+        <Header />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />

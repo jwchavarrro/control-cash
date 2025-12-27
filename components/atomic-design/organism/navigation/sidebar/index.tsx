@@ -1,3 +1,11 @@
+/**
+ * Componente de sidebar de la aplicación
+ *
+ * @module components/atomic-design/organism/navigation/sidebar
+ */
+
+'use client'
+
 import {
   SidebarInset,
   SidebarProvider,
