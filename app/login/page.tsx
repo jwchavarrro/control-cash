@@ -4,6 +4,7 @@
  * @module app/login/page
  */
 
+
 import Link from 'next/link'
 import { HandCoinsIcon } from 'lucide-react'
 
@@ -19,7 +20,7 @@ export default function LoginPage() {
         <div className="absolute bottom-0 right-0 -z-10">
           <HandCoinsIcon className="size-48 md:size-72 text-muted-foreground/10" />
         </div>
-        
+
         <header className="flex justify-center gap-2 md:justify-start">
           <Link href="#" className="flex items-center gap-2 font-bold font-title">
             <HandCoinsIcon className="size-6" />

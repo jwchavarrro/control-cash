@@ -1,3 +1,9 @@
+/**
+ * Componente de título
+ *
+ * @module components/atomic-design/atoms/title
+ */
+
 import * as React from 'react'
 import {
   TypographyH1 as BaseH1,

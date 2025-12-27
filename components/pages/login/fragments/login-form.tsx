@@ -4,9 +4,10 @@
  * @module components/pages/login/fragments/login-form
  */
 
+"use client"
+
 import {
   Field,
-  FieldDescription,
   FieldGroup,
   FieldLabel,
 } from '@/components/ui/field'
@@ -67,14 +68,14 @@ export function LoginForm({
 
         {/* Sign up Link */}
         <Field>
-          <FieldDescription>
+          <FieldLabel asChild>
             <Text>
               Don&apos;t have an account?{' '}
               <Link href="#" className="underline underline-offset-4">
                 Sign up
               </Link>
             </Text>
-          </FieldDescription>
+          </FieldLabel>
         </Field>
       </FieldGroup>
     </form>
