@@ -4,8 +4,6 @@
  * @module app/dashboard/transactions/[id]/page
  */
 
-import { TransactionForm } from '@/components/pages/transactions/fragments/transaction-form'
-
 interface EditTransactionPageProps {
   params: Promise<{ id: string }>
 }
@@ -18,7 +16,6 @@ export default async function EditTransactionPage({
   return (
     <div>
       <h1>Editar Transacción {id}</h1>
-      <TransactionForm />
     </div>
   )
 }
