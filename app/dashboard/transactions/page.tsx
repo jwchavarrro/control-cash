@@ -6,45 +6,56 @@
 
 'use client'
 
+import { useMemo } from 'react'
+
 // Import of components custom
-import { Header } from '@/components/atomic-design/molecules'
-import { GenericTable } from '@/components/atomic-design/organism/generic-table'
+import { Header, Tabs } from '@/components/atomic-design/molecules'
+import {
+  TransactionsTableIncome,
+  TransactionsTableExpense,
+} from '@/components/pages/dashboard/transactions/tabs'
 
 // Import of utilities
-import { ROUTES_PAGES, KEYWORDS } from '@/config'
-import { getAllTransactions } from '@/lib/api/services/transactions/get-all.transaction'
-import {
-  CONFIG_COLUMNS,
-  CONFIG_ACTIONS,
-} from '@/components/pages/dashboard/transactions/table'
+import { KEYWORDS } from '@/config'
+import { TAB_TRANSACTIONS_OPTIONS } from '@/components/pages/dashboard/transactions/utils'
+
+// Import of context
+import { useSelectedTabTransactions } from '@/context/pages/transactions/selected-tab-transactions'
 
 // Import of types
-import type { RecordEntity } from '@/components/atomic-design/organism/generic-table/utils/types'
-import type { Transaction } from '@/lib/api/types'
+import type { ENUM_TRANSACTION_TYPE } from '@/lib/api/types'
+import { ENUM_TRANSACTION_TYPE as TransactionType } from '@/lib/api/types'
 
 export default function TransactionsPage() {
+
+  // Import of context
+  const { selectedTabTransactions, setSelectedTabTransactions } =
+    useSelectedTabTransactions()
+
+  /**
+   * @description Contenido de los tabs
+   */
+  const tabsContent = useMemo(
+    () => ({
+      [TransactionType.INCOME]: <TransactionsTableIncome />,
+      [TransactionType.EXPENSE]: <TransactionsTableExpense />,
+    }),
+    []
+  )
+
   return (
     <div className="container mx-auto flex flex-col gap-4">
       <Header
         title={KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.TRANSACTIONS.TITLE}
         text="Explore and manage all your transactions in one place, with options to review, edit, and organize efficiently."
       />
-      <GenericTable<RecordEntity<Transaction>>
-        queryFn={async () => {
-          const transactions = await getAllTransactions()
-          return transactions as RecordEntity<Transaction>[]
-        }}
-        columns={CONFIG_COLUMNS}
-        queryKey={['transactions']}
-        newButton={{
-          text: `${KEYWORDS.COMMON.NEW} ${KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.TRANSACTIONS.TITLE}`,
-          path: ROUTES_PAGES.TRANSACTIONS.CREATE,
-        }}
-        actionsColumn={{
-          actions: CONFIG_ACTIONS(),
-          header: 'Actions',
-          position: 'start',
-        }}
+      <Tabs
+        options={TAB_TRANSACTIONS_OPTIONS}
+        selectedItem={selectedTabTransactions}
+        setSelectedItem={item =>
+          setSelectedTabTransactions(item as ENUM_TRANSACTION_TYPE)
+        }
+        content={tabsContent}
       />
     </div>
   )
