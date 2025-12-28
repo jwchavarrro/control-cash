@@ -10,7 +10,7 @@ import { SlashIcon } from 'lucide-react'
 import { Text } from '@/components/atomic-design/atoms'
 
 // Import of types
-import { BreadcrumbItem as BreadcrumbItemType } from '@/components/atomic-design/organism/navigation/breadcrumb/utils/types'
+import { BreadcrumbItem as BreadcrumbItemType } from '@/components/atomic-design/organism/navigation/breadcrumb/utils'
 
 interface BreadcrumbItemRendererProps {
   item: BreadcrumbItemType

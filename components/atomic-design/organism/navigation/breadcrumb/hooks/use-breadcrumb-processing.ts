@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 // Import of types
-import { BreadcrumbItem } from '@/components/atomic-design/organism/navigation/breadcrumb/utils/types'
+import { BreadcrumbItem } from '@/components/atomic-design/organism/navigation/breadcrumb/utils'
 
 interface UseBreadcrumbProcessingProps {
   items: BreadcrumbItem[]
