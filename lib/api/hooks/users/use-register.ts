@@ -8,9 +8,10 @@
 'use client'
 
 import { useMutation } from '@tanstack/react-query'
+import { toast } from 'sonner'
 import { authService } from '@/lib/api/services'
 import { saveSession } from '@/lib/auth'
-import type { LoginRequest, LoginResponse } from '@/lib/api/types'
+import type { RegisterRequest, LoginResponse } from '@/lib/api/types'
 
 /**
  * Hook para registrar nuevo usuario
@@ -19,11 +20,15 @@ import type { LoginRequest, LoginResponse } from '@/lib/api/types'
  * @returns Mutation para registro
  */
 export function useRegister() {
-  return useMutation<LoginResponse, Error, LoginRequest>({
+  return useMutation<LoginResponse, Error, RegisterRequest>({
     mutationFn: authService.register,
     onSuccess: data => {
       // Guardar sesión usando función consolidada
-      saveSession(data.token, '1')
+      saveSession(data.token, data.user.id)
+      toast.success('Account created successfully!')
+    },
+    onError: error => {
+      toast.error(error?.message || 'Error creating account. Please try again.')
     },
   })
 }

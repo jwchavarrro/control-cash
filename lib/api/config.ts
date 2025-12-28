@@ -1,6 +1,6 @@
 /**
  * Configuración de APIs
- * URLs base para MockAPI y ReqRes
+ * URLs base para MockAPI
  *
  * @module lib/api/config
  */
@@ -21,18 +21,6 @@ export const API_CONFIG = {
     endpoints: {
       transactions: `https://${MOCKAPI_PROJECT_ID}.mockapi.io/api/v1/transactions`,
       users: `https://${MOCKAPI_PROJECT_ID}.mockapi.io/api/v1/users`,
-    },
-  },
-  /**
-   * @name reqres
-   * @description Configuración de ReqRes para autenticación
-   */
-  reqres: {
-    baseUrl: 'https://reqres.in/api',
-    endpoints: {
-      login: 'https://reqres.in/api/login',
-      register: 'https://reqres.in/api/register',
-      users: 'https://reqres.in/api/users',
     },
   },
 } as const
