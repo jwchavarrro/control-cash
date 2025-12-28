@@ -5,8 +5,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/atomic-design/atoms/shadcn/dropdown-menu';
-import { Button } from '@/components/atomic-design/atoms/shadcn/button';
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
 import { type ActionItem } from '../types';
 
 // Accept broader TData type
@@ -44,7 +44,6 @@ export const ActionsCell = <TData extends Record<string, unknown>>({
     );
   }
 
-  // If we have more than 3 actions, use a dropdown menu
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

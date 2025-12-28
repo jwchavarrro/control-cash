@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { type GenericTableProps } from './types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useGenericTable } from './hooks/use-generic-table';
@@ -7,7 +7,6 @@ import {
   PageHeaderComponent,
   TableComponent,
   PaginationComponent,
-  FilterModalComponent,
 } from './components';
 
 export const GenericTable = <TData extends Record<string, unknown>>({
@@ -15,15 +14,12 @@ export const GenericTable = <TData extends Record<string, unknown>>({
   columns: columnConfig,
   title,
   initialPageSize,
-  enableColumnFilters = true,
   newButton,
   initialSort,
   queryKey,
   enabled = true,
   actionsColumn,
 }: GenericTableProps<TData>) => {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-
   const { table, globalFilter, setGlobalFilter, isLoading, error } =
     useGenericTable<TData>({
       queryFn,
@@ -34,9 +30,6 @@ export const GenericTable = <TData extends Record<string, unknown>>({
       enabled,
       actionsColumn,
     });
-
-  // Count active filters
-  const activeFilterCount = table.getState().columnFilters.length;
 
   if (isLoading) {
     return (
@@ -66,25 +59,13 @@ export const GenericTable = <TData extends Record<string, unknown>>({
 
   return (
     <div>
-      {/* Header with Filtering Input and Filter Button */}
+      {/* Header with Global Search */}
       <PageHeaderComponent
         title={title}
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
-        enableColumnFilters={enableColumnFilters}
-        setIsFilterOpen={setIsFilterOpen}
-        activeFilterCount={activeFilterCount}
         newButton={newButton}
       />
-
-      {/* Filter Modal */}
-      {enableColumnFilters && (
-        <FilterModalComponent
-          isOpen={isFilterOpen}
-          onClose={() => setIsFilterOpen(false)}
-          table={table}
-        />
-      )}
 
       {/* Table Component */}
       <TableComponent table={table} />

@@ -1,23 +1,13 @@
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { FilterIcon, PlusCircle, Search } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { PlusCircle, Search } from 'lucide-react';
 import Link from 'next/link';
 import { type ReactNode } from 'react';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 
 interface PageHeaderProps {
   title: string;
   globalFilter: string;
   setGlobalFilter: (value: string) => void;
-  enableColumnFilters: boolean;
-  setIsFilterOpen: (isOpen: boolean) => void;
-  activeFilterCount: number;
   newButton?: {
     text: string;
     path?: string; // Target URL for navigation (optional if onClick is provided)
@@ -25,52 +15,6 @@ interface PageHeaderProps {
     icon?: ReactNode;
   };
 }
-
-/**
- * Renders the filter button with active filters count
- */
-const FilterButton = ({
-  activeFilterCount,
-  setIsFilterOpen,
-}: {
-  activeFilterCount: number;
-  setIsFilterOpen: (isOpen: boolean) => void;
-}) => {
-  const isActive = activeFilterCount > 0;
-  const tooltipText = isActive
-    ? `${activeFilterCount} filtros activos`
-    : 'Filtrar columnas';
-
-  return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            variant={isActive ? 'default' : 'secondary'}
-            size='sm'
-            className={`h-8 relative ${
-              isActive ? 'bg-primary text-primary-foreground' : ''
-            }`}
-            onClick={() => setIsFilterOpen(true)}
-            aria-label={`Filtrar columnas (${activeFilterCount} activos)`}
-          >
-            <FilterIcon className='h-4 w-4 mr-1' />
-            <span>Filtros</span>
-            {isActive && (
-              <Badge
-                variant='secondary'
-                className='ml-1 h-5 min-w-5 flex items-center justify-center p-0 text-xs'
-              >
-                {activeFilterCount}
-              </Badge>
-            )}
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>{tooltipText}</TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  );
-};
 
 /**
  * Renders the new item button
@@ -119,9 +63,6 @@ export const PageHeaderComponent = ({
   title,
   globalFilter,
   setGlobalFilter,
-  enableColumnFilters,
-  setIsFilterOpen,
-  activeFilterCount,
   newButton,
 }: PageHeaderProps) => {
   return (
@@ -141,13 +82,6 @@ export const PageHeaderComponent = ({
               className='max-w-sm pl-8'
             />
           </div>
-
-          {enableColumnFilters && (
-            <FilterButton
-              activeFilterCount={activeFilterCount}
-              setIsFilterOpen={setIsFilterOpen}
-            />
-          )}
         </div>
 
         <div className='flex gap-2'>

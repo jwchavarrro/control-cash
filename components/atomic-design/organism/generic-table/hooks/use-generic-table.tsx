@@ -7,13 +7,9 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
   type ColumnDef,
   type SortingState,
-  type ColumnFiltersState,
   type PaginationState,
-  type FilterFn,
 } from '@tanstack/react-table';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -22,11 +18,6 @@ import {
   type ColumnConfig,
 } from './types';
 import { ActionsCell } from '../components';
-import {
-  dateRangeFilterFn,
-  multiSelectFilterFn,
-  numberRangeFilterFn,
-} from '../components/filter-modal/utils/helpers';
 
 export const useGenericTable = <TData extends Record<string, unknown>>({
   queryFn,
@@ -39,7 +30,6 @@ export const useGenericTable = <TData extends Record<string, unknown>>({
 }: UseGenericTableProps<TData>) => {
   // --- State Management ---
   const [sorting, setSorting] = useState<SortingState>(initialSort ?? []);
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState('');
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
@@ -89,19 +79,8 @@ export const useGenericTable = <TData extends Record<string, unknown>>({
         id: config.id as string,
         header: () => config.header,
         enableSorting: config.enableSorting ?? true,
-        enableColumnFilter: config.enableColumnFilter ?? true,
         meta: meta,
       };
-
-      // Add filterFn based on column type
-      if (config.meta?.isDate) {
-        baseColumnDef.filterFn = dateRangeFilterFn as FilterFn<TData>;
-      } else if (config.meta?.isNumber) {
-        baseColumnDef.filterFn = numberRangeFilterFn as FilterFn<TData>;
-      } else {
-        // Use multiSelectFilterFn for string columns by default
-        baseColumnDef.filterFn = multiSelectFilterFn as FilterFn<TData>;
-      }
 
       // If a custom cell renderer is provided, use it
       // Note: We still need accessorKey for filtering, searching, and sorting to work properly
@@ -160,7 +139,6 @@ export const useGenericTable = <TData extends Record<string, unknown>>({
         id: '_actions',
         header: actionsColumn.header || 'Actions',
         enableSorting: false,
-        enableColumnFilter: false,
         meta: {
           header: actionsColumn.header || 'Actions', // Add header to meta
         },
@@ -189,20 +167,16 @@ export const useGenericTable = <TData extends Record<string, unknown>>({
     columns,
     state: {
       sorting,
-      columnFilters,
       globalFilter,
       pagination,
     },
     onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
     onGlobalFilterChange: setGlobalFilter,
     onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
     debugTable: process.env.NODE_ENV === 'development',
   });
 

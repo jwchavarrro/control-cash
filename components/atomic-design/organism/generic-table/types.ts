@@ -1,19 +1,13 @@
 import { type ColumnDef, type SortingState } from '@tanstack/react-table';
 import { type ReactNode } from 'react';
 
-// --- Column Configuration ---
 
-/** Metadata for column configuration, extending TanStack Table's meta */
 export interface ColumnConfigMeta {
   isDate?: boolean;
   isNumber?: boolean;
-  filterMultiSelect?: boolean; // Hint for filter modal UI
-  singleSelect?: boolean; // When true, dropdown will use single-select mode instead of multi-select
 }
 
-/**
- * Extracts only the actual keys from a type, ignoring Record<string, unknown> which allows arbitrary string keys
- */
+
 export type StrictKeys<T> = keyof {
   [K in keyof T as string extends K
     ? never
@@ -22,35 +16,25 @@ export type StrictKeys<T> = keyof {
       : K]: T[K];
 };
 
-/**
- * Configuration for a single table column.
- * Extends TanStack Table's ColumnDef but specifies required fields and adds meta.
- * TData represents the data type of a single row object (e.g., User, Role).
- */
+
 export interface ColumnConfig<TData extends Record<string, unknown>>
   extends Omit<
     ColumnDef<TData, unknown>,
     | 'id'
-    | 'accessorKey' // We use 'id' which often serves as accessorKey
+    | 'accessorKey' 
     | 'header'
     | 'cell'
     | 'enableSorting'
-    | 'enableGlobalFilter' // Keep field for future expansion
-    | 'enableColumnFilter'
+    | 'enableGlobalFilter' 
     | 'meta'
   > {
-  /**
-   * Unique identifier for the column.
-   * Should match a key in TData for data columns, or be a string prefixed with underscore for display/action columns.
-   * For action columns or custom columns, prefix with underscore (e.g., '_actions')
-   */
+
+ 
   id: StrictKeys<TData> | `_${string}`;
   /** The header label displayed for the column. */
   header: string | ReactNode;
   /** Enable/disable sorting for this column (Default: true). */
   enableSorting?: boolean;
-  /** Enable/disable filtering for this column (shows in Filter Modal) (Default: true). */
-  enableColumnFilter?: boolean;
   /** Optional custom cell rendering component. Uses TanStack's `flexRender`. */
   cell?: ColumnDef<TData, unknown>['cell'];
   /** Optional custom metadata accessible via `column.columnDef.meta`. */
@@ -96,8 +80,6 @@ export interface GenericTableProps<TData extends Record<string, unknown>>
   extends UseGenericTableProps<TData> {
   /** Title displayed above the table. Required. */
   title: string;
-  /** Enable/disable the column filter button and modal. (Default: true) */
-  enableColumnFilters?: boolean;
   /** Configuration for the 'Add New' button shown in the header. */
   newButton?: {
     text: string;
