@@ -4,8 +4,6 @@
  * @module components/atomic-design/molecules/cards/card/index
  */
 
-import { Card as BaseCard } from '@/components/ui/card'
-
 // Import of utilities
 import { cn } from '@/lib/utils'
 
@@ -33,14 +31,14 @@ export function Card({
   as = 'div',
   ...props
 }: CardProps) {
+  const baseClasses =
+    'rounded-xl border min-h-20 shadow-lg'
+
   if (as === 'button') {
     return (
       <button
         type="button"
-        className={cn(
-          'bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm',
-          className
-        )}
+        className={cn('cursor-pointer', baseClasses, className)}
         {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
       >
         {children}
@@ -49,8 +47,11 @@ export function Card({
   }
 
   return (
-    <BaseCard className={className} {...(props as HTMLAttributes<HTMLDivElement>)}>
+    <div
+      className={cn(baseClasses, className)}
+      {...(props as HTMLAttributes<HTMLDivElement>)}
+    >
       {children}
-    </BaseCard>
+    </div>
   )
 }

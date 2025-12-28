@@ -4,4 +4,5 @@
  * @module components/pages/dashboard
  */
 
+export * from './master'
 export * from './utils'

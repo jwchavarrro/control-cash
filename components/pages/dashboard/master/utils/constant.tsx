@@ -4,30 +4,35 @@
  * @module components/pages/master/utils/constant
  */
 
-import { Package, UserCog, type LucideIcon } from 'lucide-react'
+import { Package, UserCog } from 'lucide-react'
 
 // Import of utilities
-import { KEYWORDS } from '@/config'
+import { ROUTES_PAGES,KEYWORDS } from '@/config'
 
 
 
-type MasterCardItem = {
-  icon: LucideIcon
+export type MasterCardItem = {
+  icon: React.ReactNode
   name: string
   detail: string
+  link: string
 }
 
-export const masterCardList: MasterCardItem[] = [
+export const MASTER_CARD_LIST: MasterCardItem[] = [
   {
-    icon: Package,
+    icon: <Package />,
     name: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.PRODUCTS,
     detail:
       'Comprehensive management and administration of all product accounts, including product creation, modification, and access control.',
+
+      link: ROUTES_PAGES.MASTER.PRODUCTS.LIST,
   },
   {
-    icon: UserCog,
+    icon: <UserCog />,
     name: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.USERS,
     detail:
       'Comprehensive management and administration of all user accounts, including user creation, modification, and access control.',
+
+      link: ROUTES_PAGES.MASTER.USERS.LIST,
   },
 ]
