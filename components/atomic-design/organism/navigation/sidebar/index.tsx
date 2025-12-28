@@ -15,6 +15,7 @@ import { Separator } from '@/components/ui/separator'
 
 // Import of components custom
 import { AppSidebar } from '@/components/atomic-design/organism/navigation/sidebar/components'
+import { Breadcrumbs } from '@/components/atomic-design/organism'
 
 // Import of types
 import {
@@ -41,6 +42,7 @@ export const Sidebar = ({ items, user, children }: SidebarProps) => {
               className="mr-2 data-[orientation=vertical]:h-4"
             />
             {/* Breadcrumb */}
+            <Breadcrumbs />
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</div>

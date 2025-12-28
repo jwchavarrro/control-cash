@@ -31,7 +31,7 @@ export const Message = ({
     <div
       className={cn('flex flex-col items-center gap-2 opacity-50', className)}
     >
-      <Icon className="text-muted-foreground/10 size-20" {...iconProps} />
+      <Icon className="text-muted-foreground size-20" {...iconProps} />
       <div className="flex flex-col items-center">
         {title && <Title level={4}>{title}</Title>}
         {description && (
