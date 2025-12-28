@@ -5,13 +5,16 @@
  */
 
 /**
- * Obtiene la primera palabra de un string.
- * @param {string} text - El texto del que extraer la primera palabra.
- * @returns {string} - La primera palabra o una cadena vacía si no hay palabras.
+ * Obtiene las primeras palabras de un string.
+ * @param {string} text - El texto del que extraer las palabras.
+ * @param {number} count - Cantidad de palabras a mostrar (por defecto 1).
+ * @returns {string} - Las palabras solicitadas o una cadena vacía si no hay palabras.
  */
-export function getFirstWord(text: string): string {
+export function getFirstsWords(text: string, count: number = 1): string {
   if (!text) return '';
-  const regex = /^\S+/;
-  const match = regex.exec(text.trim());
-  return match ? match[0] : '';
+  const trimmed = text.trim();
+  if (!trimmed) return '';
+  
+  const words = trimmed.split(/\s+/);
+  return words.slice(0, count).join(' ');
 }
