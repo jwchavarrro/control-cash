@@ -31,8 +31,8 @@ export const Header = () => {
         >
           <div className="flex items-center justify-center">
             <Link
-              href="#"
-              className="font-title flex items-center gap-2 text-xl font-bold text-white hover:text-white/50"
+              href="/"
+              className="font-title flex items-center gap-2 text-xl font-bold text-white"
             >
               <HandCoinsIcon className="size-6" />
               {logoCtrlCash && <span>CtrlCash</span>}
