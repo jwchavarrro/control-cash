@@ -6,6 +6,7 @@
 
 'use client'
 
+import { useRouter } from 'next/navigation'
 import {
   getToken,
   getUserId,
@@ -25,12 +26,19 @@ export interface SessionInfo {
 }
 
 export function useSession(): SessionInfo {
+  const router = useRouter()
+
+  const handleLogout = () => {
+    logoutAuth()
+    router.push('/login')
+  }
+
   return {
     token: getToken(),
     userId: getUserId(),
     email: getUserEmail(),
     name: getUserName(),
     isAuthenticated: isAuthenticated(),
-    logout: logoutAuth,
+    logout: handleLogout,
   }
 }
