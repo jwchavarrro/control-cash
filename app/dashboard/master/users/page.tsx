@@ -9,47 +9,19 @@
 // Import of components custom
 import { Header } from '@/components/atomic-design/molecules'
 import { GenericTable } from '@/components/atomic-design/organism/generic-table'
-import type {
-  ColumnConfig,
-  RecordEntity,
-} from '@/components/atomic-design/organism/generic-table/utils/types'
+import type { RecordEntity } from '@/components/atomic-design/organism/generic-table/utils/types'
 
-// Import of services
+// Import of utilities
+import { KEYWORDS } from '@/config'
+import { CONFIG_COLUMNS } from '@/components/pages/dashboard/master/users'
+
+// Import of custom service
 import { getAllUsers } from '@/lib/api/services/users'
 
 // Import of types
 import type { User } from '@/lib/api/types'
 
-// Import of utilities
-import { KEYWORDS } from '@/config'
-
 export default function UsersPage() {
-  const columns: ColumnConfig<RecordEntity<User>>[] = [
-    {
-      id: 'id',
-      header: 'ID',
-      enableSorting: true,
-    },
-    {
-      id: 'name',
-      header: 'Nombre',
-      enableSorting: true,
-    },
-    {
-      id: 'email',
-      header: 'Email',
-      enableSorting: true,
-    },
-    {
-      id: 'createdAt',
-      header: 'Fecha de Creación',
-      enableSorting: true,
-      meta: {
-        isDate: true,
-      },
-    },
-  ]
-
   return (
     <div className="container mx-auto flex flex-col gap-4">
       <Header
@@ -61,16 +33,11 @@ export default function UsersPage() {
           const users = await getAllUsers()
           return users as RecordEntity<User>[]
         }}
-        columns={columns}
-        title=""
-        initialPageSize={10}
+        columns={CONFIG_COLUMNS}
         queryKey={['users']}
         newButton={{
-          text: 'Nuevo Usuario',
-          onClick: () => {
-            // TODO: Implementar navegación o modal para crear usuario
-            console.log('Crear nuevo usuario')
-          },
+          text: `${KEYWORDS.COMMON.NEW} ${KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.USERS}`,
+          onClick: () => {},
         }}
       />
     </div>

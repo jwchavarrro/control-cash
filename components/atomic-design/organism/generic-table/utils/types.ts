@@ -60,13 +60,8 @@ export interface UseGenericTableProps<TData extends Record<string, unknown>> {
 export interface GenericTableProps<
   TData extends Record<string, unknown>,
 > extends UseGenericTableProps<TData> {
-  title: string
-  newButton?: {
-    text: string
-    path?: string
-    onClick?: () => void | Promise<void>
-    icon?: ReactNode
-  }
+  title?: string
+  newButton?: NewButtonProps
 }
 
 export type NewButtonProps = {
