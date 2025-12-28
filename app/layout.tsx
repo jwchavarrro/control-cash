@@ -1,3 +1,10 @@
+/**
+ * @file layout.tsx
+ * @description Layout de la aplicación
+ * @module app/layout
+ */
+
+
 import type { Metadata } from 'next'
 import { QueryClientProvider } from '@/lib/query-client-provider'
 import { Toaster } from '@/components/ui/sonner'

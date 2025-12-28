@@ -11,6 +11,7 @@ import { Header } from '@/components/atomic-design/molecules'
 
 // Import of utilities
 import { KEYWORDS } from '@/config'
+import { getFirstWord } from '@/utils'
 
 // Import of hooks
 import { useSession } from '@/hooks'
@@ -25,7 +26,7 @@ export default function DashboardPage() {
     <div className="container mx-auto flex flex-col gap-4">
       <Header
         title={KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.DASHBOARD.TITLE}
-        text={`Welcome to your dashboard, ${name}. We're glad to have you here!`}
+        text={`Hola, ${getFirstWord(name || '')}. Welcome to your dashboard! We're glad to have you here!`}
       />
     </div>
   )
