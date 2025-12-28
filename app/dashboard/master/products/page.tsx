@@ -21,7 +21,7 @@ export default function ProductsPage() {
         text="Explore and manage all your products in one place, with options to review, edit, and organize efficiently."
       />
       <Message
-        icon={<Hammer />}
+        icon={Hammer}
         title="Under Construction"
         description="This feature is currently under development. Please check back soon."
         className="py-[5%]"

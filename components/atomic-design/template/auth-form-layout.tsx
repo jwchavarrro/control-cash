@@ -37,9 +37,9 @@ export function AuthTemplate({
           <header className="flex justify-center gap-2 md:justify-start">
             <Link
               href="/login"
-              className="font-title flex items-center gap-2 font-bold"
+              className="font-title text-primary flex items-center gap-2 font-bold"
             >
-              <HandCoinsIcon className="size-6" />
+              <HandCoinsIcon className="size-12" />
               ctrlcash
             </Link>
           </header>
