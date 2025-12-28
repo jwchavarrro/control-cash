@@ -1,14 +1,48 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
-import { Message } from '../message'
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+import { Message } from '../index'
+
+// Mock Title and Text components
+jest.mock('@/components/atomic-design/atoms', () => ({
+  Title: ({
+    children,
+    level,
+    className,
+    ...props
+  }: {
+    children: React.ReactNode
+    level?: number
+    className?: string
+    [key: string]: unknown
+  }) => (
+    <h4 data-testid="message-title" data-level={level} className={className} {...props}>
+      {children}
+    </h4>
+  ),
+  Text: ({
+    children,
+    className,
+    ...props
+  }: {
+    children: React.ReactNode
+    className?: string
+    [key: string]: unknown
+  }) => (
+    <p data-testid="message-text" className={className} {...props}>
+      {children}
+    </p>
+  ),
+}))
 
 describe('Message', () => {
+  const mockIcon = <svg data-testid="test-icon" />
+
   it('renderiza el componente correctamente', () => {
     render(
       <Message
-        icon="mdi:information"
-        title={{ title: 'Mensaje de prueba' }}
-        description={{ text: 'Descripción del mensaje' }}
+        icon={mockIcon}
+        title="Mensaje de prueba"
+        description="Descripción del mensaje"
       />
     )
     expect(screen.getByText('Mensaje de prueba')).toBeInTheDocument()
@@ -17,135 +51,122 @@ describe('Message', () => {
 
   it('renderiza como elemento div', () => {
     const { container } = render(
-      <Message
-        icon="mdi:information"
-        title={{ title: 'Título' }}
-        description={{ text: 'Descripción' }}
-      />
+      <Message icon={mockIcon} title="Título" description="Descripción" />
     )
     const div = container.querySelector('div')
     expect(div).toBeInTheDocument()
   })
 
   describe('icon', () => {
-    it('renderiza el icono correctamente', async () => {
-      const { container } = render(
+    it('renderiza el icono correctamente', () => {
+      render(
         <Message
-          icon="mdi:information"
-          title={{ title: 'Título' }}
-          description={{ text: 'Descripción' }}
+          icon={mockIcon}
+          title="Título"
+          description="Descripción"
         />
       )
-      await waitFor(() => {
-        const icon = container.querySelector('svg')
-        expect(icon).toBeInTheDocument()
-      })
+      expect(screen.getByTestId('test-icon')).toBeInTheDocument()
     })
 
-    it('aplica las clases correctas al icono', async () => {
-      const { container } = render(
+    it('renderiza cualquier ReactNode como icono', () => {
+      const customIcon = <div data-testid="custom-icon">Icon</div>
+      render(
         <Message
-          icon="mdi:information"
-          title={{ title: 'Título' }}
-          description={{ text: 'Descripción' }}
+          icon={customIcon}
+          title="Título"
+          description="Descripción"
         />
       )
-      await waitFor(() => {
-        const icon = container.querySelector('svg')
-        expect(icon).toHaveClass('size-8')
-        expect(icon).toHaveClass('md:size-12')
-      })
+      expect(screen.getByTestId('custom-icon')).toBeInTheDocument()
     })
   })
 
   describe('title', () => {
     it('no renderiza el título si no se proporciona', () => {
-      const { container } = render(
-        <Message icon="mdi:information" description={{ text: 'Descripción' }} />
-      )
-      const heading = container.querySelector('h1, h2, h3, h4, h5, h6')
-      expect(heading).not.toBeInTheDocument()
+      render(<Message icon={mockIcon} description="Descripción" />)
+      expect(screen.queryByTestId('message-title')).not.toBeInTheDocument()
     })
 
     it('renderiza el título cuando se proporciona', () => {
       render(
         <Message
-          icon="mdi:information"
-          title={{ title: 'Título del mensaje' }}
-          description={{ text: 'Descripción' }}
+          icon={mockIcon}
+          title="Título del mensaje"
+          description="Descripción"
         />
       )
       expect(screen.getByText('Título del mensaje')).toBeInTheDocument()
     })
 
-    it('aplica las props del título correctamente', () => {
-      const { container } = render(
+    it('aplica level 4 al título', () => {
+      render(
         <Message
-          icon="mdi:information"
-          title={{ title: 'Título', size: 'xl' }}
-          description={{ text: 'Descripción' }}
+          icon={mockIcon}
+          title="Título"
+          description="Descripción"
         />
       )
-      const heading = container.querySelector('h1')
+      const heading = screen.getByTestId('message-title')
       expect(heading).toBeInTheDocument()
       expect(heading).toHaveTextContent('Título')
-      expect(heading).toHaveClass('text-xl')
-      expect(heading).toHaveClass('text-center')
+      expect(heading).toHaveAttribute('data-level', '4')
     })
   })
 
   describe('description', () => {
     it('no renderiza la descripción si no se proporciona', () => {
-      const { container } = render(
-        <Message icon="mdi:information" title={{ title: 'Título' }} />
-      )
-      const text = container.querySelector('p')
-      expect(text).not.toBeInTheDocument()
+      render(<Message icon={mockIcon} title="Título" />)
+      expect(screen.queryByTestId('message-text')).not.toBeInTheDocument()
     })
 
     it('renderiza la descripción cuando se proporciona', () => {
       render(
         <Message
-          icon="mdi:information"
-          title={{ title: 'Título' }}
-          description={{ text: 'Descripción del mensaje' }}
+          icon={mockIcon}
+          title="Título"
+          description="Descripción del mensaje"
         />
       )
       expect(screen.getByText('Descripción del mensaje')).toBeInTheDocument()
     })
 
-    it('aplica las props de la descripción correctamente', () => {
-      const { container } = render(
+    it('aplica las clases correctas a la descripción', () => {
+      render(
         <Message
-          icon="mdi:information"
-          title={{ title: 'Título' }}
-          description={{ text: 'Descripción', size: 'sm', align: 'center' }}
+          icon={mockIcon}
+          title="Título"
+          description="Descripción"
         />
       )
-      const text = container.querySelector('p')
+      const text = screen.getByTestId('message-text')
       expect(text).toBeInTheDocument()
       expect(text).toHaveTextContent('Descripción')
-      // El componente Message solo pasa text y align="center", no pasa size
-      expect(text).toHaveClass('text-xs')
-      expect(text).toHaveClass('text-center')
+      expect(text).toHaveClass('m-0!')
+      expect(text).toHaveClass('p-0!')
     })
   })
 
   describe('clases base', () => {
-    it('aplica las clases base correctamente', () => {
+    it('aplica las clases base correctamente al contenedor principal', () => {
       const { container } = render(
-        <Message
-          icon="mdi:information"
-          title={{ title: 'Título' }}
-          description={{ text: 'Descripción' }}
-        />
+        <Message icon={mockIcon} title="Título" description="Descripción" />
       )
-      const div = container.querySelector('div')
-      expect(div).toHaveClass('flex')
-      expect(div).toHaveClass('flex-col')
-      expect(div).toHaveClass('items-center')
-      expect(div).toHaveClass('gap-2')
-      expect(div).toHaveClass('opacity-50')
+      const mainDiv = container.firstChild as HTMLElement
+      expect(mainDiv).toHaveClass('flex')
+      expect(mainDiv).toHaveClass('flex-col')
+      expect(mainDiv).toHaveClass('items-center')
+      expect(mainDiv).toHaveClass('opacity-50')
+    })
+
+    it('aplica las clases correctas al contenedor interno', () => {
+      const { container } = render(
+        <Message icon={mockIcon} title="Título" description="Descripción" />
+      )
+      const innerDiv = container.querySelector('div > div')
+      expect(innerDiv).toHaveClass('flex')
+      expect(innerDiv).toHaveClass('flex-col')
+      expect(innerDiv).toHaveClass('items-center')
     })
   })
 
@@ -153,101 +174,75 @@ describe('Message', () => {
     it('aplica clases personalizadas', () => {
       const { container } = render(
         <Message
-          icon="mdi:information"
-          title={{ title: 'Título' }}
-          description={{ text: 'Descripción' }}
+          icon={mockIcon}
+          title="Título"
+          description="Descripción"
           className="custom-class"
         />
       )
-      const div = container.querySelector('div')
-      expect(div).toHaveClass('custom-class')
+      const mainDiv = container.firstChild as HTMLElement
+      expect(mainDiv).toHaveClass('custom-class')
     })
 
     it('combina clases personalizadas con las clases por defecto', () => {
       const { container } = render(
         <Message
-          icon="mdi:information"
-          title={{ title: 'Título' }}
-          description={{ text: 'Descripción' }}
+          icon={mockIcon}
+          title="Título"
+          description="Descripción"
           className="custom-class border-2"
         />
       )
-      const div = container.querySelector('div')
-      expect(div).toHaveClass('flex')
-      expect(div).toHaveClass('flex-col')
-      expect(div).toHaveClass('custom-class')
-      expect(div).toHaveClass('border-2')
+      const mainDiv = container.firstChild as HTMLElement
+      expect(mainDiv).toHaveClass('flex')
+      expect(mainDiv).toHaveClass('flex-col')
+      expect(mainDiv).toHaveClass('custom-class')
+      expect(mainDiv).toHaveClass('border-2')
     })
   })
 
   describe('combinación de props', () => {
-    it('renderiza correctamente solo con icono', async () => {
-      const { container } = render(<Message icon="mdi:information" />)
-      const div = container.querySelector('div')
-      expect(div).toBeInTheDocument()
-      await waitFor(() => {
-        const icon = container.querySelector('svg')
-        expect(icon).toBeInTheDocument()
-      })
-      const heading = container.querySelector('h1, h2, h3, h4, h5, h6')
-      expect(heading).not.toBeInTheDocument()
-      const text = container.querySelector('p')
-      expect(text).not.toBeInTheDocument()
+    it('renderiza correctamente solo con icono', () => {
+      render(<Message icon={mockIcon} />)
+      expect(screen.getByTestId('test-icon')).toBeInTheDocument()
+      expect(screen.queryByTestId('message-title')).not.toBeInTheDocument()
+      expect(screen.queryByTestId('message-text')).not.toBeInTheDocument()
     })
 
     it('renderiza correctamente con icono y título', () => {
-      render(
-        <Message icon="mdi:information" title={{ title: 'Solo título' }} />
-      )
+      render(<Message icon={mockIcon} title="Solo título" />)
       expect(screen.getByText('Solo título')).toBeInTheDocument()
-      const { container } = render(
-        <Message icon="mdi:information" title={{ title: 'Solo título' }} />
-      )
-      const text = container.querySelector('p')
-      expect(text).not.toBeInTheDocument()
+      expect(screen.queryByTestId('message-text')).not.toBeInTheDocument()
     })
 
     it('renderiza correctamente con icono y descripción', () => {
-      render(
-        <Message
-          icon="mdi:information"
-          description={{ text: 'Solo descripción' }}
-        />
-      )
+      render(<Message icon={mockIcon} description="Solo descripción" />)
       expect(screen.getByText('Solo descripción')).toBeInTheDocument()
-      const { container } = render(
-        <Message
-          icon="mdi:information"
-          description={{ text: 'Solo descripción' }}
-        />
-      )
-      const heading = container.querySelector('h1, h2, h3, h4, h5, h6')
-      expect(heading).not.toBeInTheDocument()
+      expect(screen.queryByTestId('message-title')).not.toBeInTheDocument()
     })
 
     it('aplica múltiples props correctamente', () => {
       const { container } = render(
         <Message
-          icon="mdi:alert"
-          title={{ title: 'Título completo', size: 'xl' }}
-          description={{ text: 'Descripción completa', size: 'base' }}
+          icon={mockIcon}
+          title="Título completo"
+          description="Descripción completa"
           className="custom-message"
         />
       )
-      const div = container.querySelector('div')
-      expect(div).toHaveClass('custom-message')
-      expect(div).toHaveClass('flex')
-      expect(div).toHaveClass('flex-col')
+      const mainDiv = container.firstChild as HTMLElement
+      expect(mainDiv).toHaveClass('custom-message')
+      expect(mainDiv).toHaveClass('flex')
+      expect(mainDiv).toHaveClass('flex-col')
 
-      const heading = container.querySelector('h1')
+      const heading = screen.getByTestId('message-title')
       expect(heading).toHaveTextContent('Título completo')
-      // El componente Message siempre usa size="xl" para el Title
-      expect(heading).toHaveClass('text-xl')
+      expect(heading).toHaveAttribute('data-level', '4')
 
-      const text = container.querySelector('p')
+      const text = screen.getByTestId('message-text')
       expect(text).toHaveTextContent('Descripción completa')
-      // El componente Message solo pasa text y align="center", no pasa size
-      expect(text).toHaveClass('text-xs')
+      expect(text).toHaveClass('m-0!')
+      expect(text).toHaveClass('p-0!')
     })
   })
 })
