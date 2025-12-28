@@ -1,4 +1,9 @@
- 
+/**
+ * @file use-generic-table.tsx
+ * @description Hook para el componente GenericTable
+ * @module components/atomic-design/organism/generic-table/hooks/use-generic-table
+ */
+
 import { useMemo, useState } from 'react'
 import {
   useReactTable,
@@ -11,12 +16,14 @@ import {
   type PaginationState,
 } from '@tanstack/react-table'
 import { useQuery } from '@tanstack/react-query'
-import {
-  type UseGenericTableProps,
-  type GenericTableProps,
-  type ColumnConfig,
-} from './types'
-import { ActionsCell } from '../components'
+
+// Import of components custom
+import { ActionsCell } from '@/components/atomic-design/organism/generic-table/components'
+
+// Import of types
+import { type UseGenericTableProps, type ColumnConfig } from '@/components/atomic-design/organism/generic-table/utils/types'
+
+
 
 export const useGenericTable = <TData extends Record<string, unknown>>({
   queryFn,
@@ -27,8 +34,10 @@ export const useGenericTable = <TData extends Record<string, unknown>>({
   enabled = true,
   actionsColumn,
 }: UseGenericTableProps<TData>) => {
+
+  // States generales
   const [sorting, setSorting] = useState<SortingState>(initialSort ?? [])
-  const [globalFilter, setGlobalFilter] = useState('')
+  const [globalFilter, setGlobalFilter] = useState<string>('')
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: initialPageSize,

@@ -5,6 +5,5 @@
  */
 
 export * from './generic-table'
-export * from './utils/types'
 export * from './hooks/use-generic-table'
-export * from './utils/type-utils'
+export * from './utils'

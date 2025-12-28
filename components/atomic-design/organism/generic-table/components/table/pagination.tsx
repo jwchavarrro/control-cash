@@ -16,7 +16,6 @@ import {
 // Import of types
 import { type Table } from '@tanstack/react-table'
 
-
 interface PaginationProps<TData extends Record<string, unknown>> {
   table: Table<TData>
 }

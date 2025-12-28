@@ -4,7 +4,6 @@
  * @module components/atomic-design/organism/generic-table/components/page-header
  */
 
-
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { PlusCircle, Search } from 'lucide-react'

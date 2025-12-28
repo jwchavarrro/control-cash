@@ -3,9 +3,9 @@ import { Skeleton } from '@/components/ui/skeleton'
 // Import of components custom
 import {
   PageHeaderComponent,
-  TableComponent,
   PaginationComponent,
 } from '@/components/atomic-design/organism/generic-table/components'
+import { TableComponent } from '@/components/atomic-design/organism/generic-table/fragments/table-component'
 
 // Import of custom hooks
 import { useGenericTable } from '@/components/atomic-design/organism/generic-table/hooks/use-generic-table'
@@ -24,7 +24,6 @@ export const GenericTable = <TData extends Record<string, unknown>>({
   enabled = true,
   actionsColumn,
 }: GenericTableProps<TData>) => {
-
   // Implement of custom hooks
   const { table, globalFilter, setGlobalFilter, isLoading, error } =
     useGenericTable<TData>({

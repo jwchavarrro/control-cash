@@ -4,4 +4,4 @@
  * @module components/atomic-design/organism/generic-table/utils
  */
 
-export * from './type-utils'
+export * from './types'

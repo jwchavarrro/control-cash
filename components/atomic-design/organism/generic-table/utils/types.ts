@@ -68,3 +68,5 @@ export interface GenericTableProps<
     icon?: ReactNode
   }
 }
+
+export type RecordEntity<T> = T & Record<string, unknown>

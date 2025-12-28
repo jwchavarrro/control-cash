@@ -5,7 +5,10 @@
  */
 
 // Import of components custom
-import { TableHeaderComponent, TableBodyComponent } from '@/components/atomic-design/organism/generic-table/components'
+import {
+  TableHeaderComponent,
+  TableBodyComponent,
+} from '@/components/atomic-design/organism/generic-table/components'
 
 // Import of types
 import { type Table } from '@tanstack/react-table'
