@@ -81,14 +81,14 @@ describe('LoginForm', () => {
     const forgotPasswordLink = screen
       .getByText('Forgot your password?')
       .closest('a')
-    expect(forgotPasswordLink).toHaveAttribute('href', '#')
+    expect(forgotPasswordLink).toHaveAttribute('href', '/forgot')
   })
 
   it('should render sign up link with correct href', () => {
     render(<LoginForm />)
 
     const signUpLink = screen.getByText('Sign up').closest('a')
-    expect(signUpLink).toHaveAttribute('href', '#')
+    expect(signUpLink).toHaveAttribute('href', '/register')
   })
 
   it('should apply custom className when provided', () => {

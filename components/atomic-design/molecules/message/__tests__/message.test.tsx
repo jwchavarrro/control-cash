@@ -15,7 +15,12 @@ jest.mock('@/components/atomic-design/atoms', () => ({
     className?: string
     [key: string]: unknown
   }) => (
-    <h4 data-testid="message-title" data-level={level} className={className} {...props}>
+    <h4
+      data-testid="message-title"
+      data-level={level}
+      className={className}
+      {...props}
+    >
       {children}
     </h4>
   ),
@@ -35,12 +40,18 @@ jest.mock('@/components/atomic-design/atoms', () => ({
 }))
 
 describe('Message', () => {
-  const mockIcon = <svg data-testid="test-icon" />
+  const MockIcon = ({
+    className,
+    ...props
+  }: {
+    className?: string
+    [key: string]: unknown
+  }) => <div data-testid="test-icon" className={className} {...props} />
 
   it('renderiza el componente correctamente', () => {
     render(
       <Message
-        icon={mockIcon}
+        icon={MockIcon}
         title="Mensaje de prueba"
         description="Descripción del mensaje"
       />
@@ -51,7 +62,7 @@ describe('Message', () => {
 
   it('renderiza como elemento div', () => {
     const { container } = render(
-      <Message icon={mockIcon} title="Título" description="Descripción" />
+      <Message icon={MockIcon} title="Título" description="Descripción" />
     )
     const div = container.querySelector('div')
     expect(div).toBeInTheDocument()
@@ -60,20 +71,25 @@ describe('Message', () => {
   describe('icon', () => {
     it('renderiza el icono correctamente', () => {
       render(
-        <Message
-          icon={mockIcon}
-          title="Título"
-          description="Descripción"
-        />
+        <Message icon={MockIcon} title="Título" description="Descripción" />
       )
       expect(screen.getByTestId('test-icon')).toBeInTheDocument()
     })
 
     it('renderiza cualquier ReactNode como icono', () => {
-      const customIcon = <div data-testid="custom-icon">Icon</div>
       render(
         <Message
-          icon={customIcon}
+          icon={({
+            className,
+            ...props
+          }: {
+            className?: string
+            [key: string]: unknown
+          }) => (
+            <div data-testid="custom-icon" className={className} {...props}>
+              Icon
+            </div>
+          )}
           title="Título"
           description="Descripción"
         />
@@ -84,14 +100,14 @@ describe('Message', () => {
 
   describe('title', () => {
     it('no renderiza el título si no se proporciona', () => {
-      render(<Message icon={mockIcon} description="Descripción" />)
+      render(<Message icon={MockIcon} description="Descripción" />)
       expect(screen.queryByTestId('message-title')).not.toBeInTheDocument()
     })
 
     it('renderiza el título cuando se proporciona', () => {
       render(
         <Message
-          icon={mockIcon}
+          icon={MockIcon}
           title="Título del mensaje"
           description="Descripción"
         />
@@ -101,11 +117,7 @@ describe('Message', () => {
 
     it('aplica level 4 al título', () => {
       render(
-        <Message
-          icon={mockIcon}
-          title="Título"
-          description="Descripción"
-        />
+        <Message icon={MockIcon} title="Título" description="Descripción" />
       )
       const heading = screen.getByTestId('message-title')
       expect(heading).toBeInTheDocument()
@@ -116,14 +128,14 @@ describe('Message', () => {
 
   describe('description', () => {
     it('no renderiza la descripción si no se proporciona', () => {
-      render(<Message icon={mockIcon} title="Título" />)
+      render(<Message icon={MockIcon} title="Título" />)
       expect(screen.queryByTestId('message-text')).not.toBeInTheDocument()
     })
 
     it('renderiza la descripción cuando se proporciona', () => {
       render(
         <Message
-          icon={mockIcon}
+          icon={MockIcon}
           title="Título"
           description="Descripción del mensaje"
         />
@@ -133,11 +145,7 @@ describe('Message', () => {
 
     it('aplica las clases correctas a la descripción', () => {
       render(
-        <Message
-          icon={mockIcon}
-          title="Título"
-          description="Descripción"
-        />
+        <Message icon={MockIcon} title="Título" description="Descripción" />
       )
       const text = screen.getByTestId('message-text')
       expect(text).toBeInTheDocument()
@@ -150,7 +158,7 @@ describe('Message', () => {
   describe('clases base', () => {
     it('aplica las clases base correctamente al contenedor principal', () => {
       const { container } = render(
-        <Message icon={mockIcon} title="Título" description="Descripción" />
+        <Message icon={MockIcon} title="Título" description="Descripción" />
       )
       const mainDiv = container.firstChild as HTMLElement
       expect(mainDiv).toHaveClass('flex')
@@ -161,7 +169,7 @@ describe('Message', () => {
 
     it('aplica las clases correctas al contenedor interno', () => {
       const { container } = render(
-        <Message icon={mockIcon} title="Título" description="Descripción" />
+        <Message icon={MockIcon} title="Título" description="Descripción" />
       )
       const innerDiv = container.querySelector('div > div')
       expect(innerDiv).toHaveClass('flex')
@@ -174,7 +182,7 @@ describe('Message', () => {
     it('aplica clases personalizadas', () => {
       const { container } = render(
         <Message
-          icon={mockIcon}
+          icon={MockIcon}
           title="Título"
           description="Descripción"
           className="custom-class"
@@ -187,7 +195,7 @@ describe('Message', () => {
     it('combina clases personalizadas con las clases por defecto', () => {
       const { container } = render(
         <Message
-          icon={mockIcon}
+          icon={MockIcon}
           title="Título"
           description="Descripción"
           className="custom-class border-2"
@@ -203,20 +211,20 @@ describe('Message', () => {
 
   describe('combinación de props', () => {
     it('renderiza correctamente solo con icono', () => {
-      render(<Message icon={mockIcon} />)
+      render(<Message icon={MockIcon} />)
       expect(screen.getByTestId('test-icon')).toBeInTheDocument()
       expect(screen.queryByTestId('message-title')).not.toBeInTheDocument()
       expect(screen.queryByTestId('message-text')).not.toBeInTheDocument()
     })
 
     it('renderiza correctamente con icono y título', () => {
-      render(<Message icon={mockIcon} title="Solo título" />)
+      render(<Message icon={MockIcon} title="Solo título" />)
       expect(screen.getByText('Solo título')).toBeInTheDocument()
       expect(screen.queryByTestId('message-text')).not.toBeInTheDocument()
     })
 
     it('renderiza correctamente con icono y descripción', () => {
-      render(<Message icon={mockIcon} description="Solo descripción" />)
+      render(<Message icon={MockIcon} description="Solo descripción" />)
       expect(screen.getByText('Solo descripción')).toBeInTheDocument()
       expect(screen.queryByTestId('message-title')).not.toBeInTheDocument()
     })
@@ -224,7 +232,7 @@ describe('Message', () => {
     it('aplica múltiples props correctamente', () => {
       const { container } = render(
         <Message
-          icon={mockIcon}
+          icon={MockIcon}
           title="Título completo"
           description="Descripción completa"
           className="custom-message"

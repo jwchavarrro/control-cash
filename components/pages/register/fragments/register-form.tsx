@@ -1,7 +1,8 @@
 /**
- * @file login-form.tsx
- * @description Formulario de login
- * @module components/pages/login/fragments/login-form
+ * Fragmento de formulario de registro
+ * Estructura básica - la lógica se implementará después
+ *
+ * @module components/pages/register/fragments/register-form
  */
 
 'use client'
@@ -17,7 +18,7 @@ import { Title, Text } from '@/components/atomic-design/atoms'
 // Import of utilities
 import { cn } from '@/lib/utils'
 
-export function LoginForm({
+export function RegisterForm({
   className,
   ...props
 }: React.ComponentProps<'form'>) {
@@ -26,10 +27,17 @@ export function LoginForm({
       <FieldGroup>
         <header className="flex flex-col items-center gap-1 text-center">
           <Title level={1} color="primary" className="text-2xl font-bold">
-            Login to your account
+            Create an account
           </Title>
-          <Text>Enter your email below to login to your account</Text>
+          <Text>Enter your information below to create your account</Text>
         </header>
+        {/* Name */}
+        <Field>
+          <FieldLabel asChild htmlFor="name">
+            <Text>Name</Text>
+          </FieldLabel>
+          <Input id="name" type="text" placeholder="John Doe" required />
+        </Field>
         {/* Email */}
         <Field>
           <FieldLabel asChild htmlFor="email">
@@ -39,19 +47,9 @@ export function LoginForm({
         </Field>
         {/* Password */}
         <Field>
-          <div className="flex items-center">
-            <FieldLabel asChild htmlFor="password">
-              <Text>Password</Text>
-            </FieldLabel>
-            <Link
-              href="/forgot"
-              className="hover:underline-primary ml-auto underline-offset-4 hover:underline"
-            >
-              <Text color="primary" variant="small">
-                Forgot your password?
-              </Text>
-            </Link>
-          </div>
+          <FieldLabel asChild htmlFor="password">
+            <Text>Password</Text>
+          </FieldLabel>
           <Input
             id="password"
             type="password"
@@ -59,22 +57,34 @@ export function LoginForm({
             required
           />
         </Field>
-
-        {/* Login Button */}
+        {/* Confirm Password */}
         <Field>
-          <Button type="submit">Login</Button>
+          <FieldLabel asChild htmlFor="confirmPassword">
+            <Text>Confirm Password</Text>
+          </FieldLabel>
+          <Input
+            id="confirmPassword"
+            type="password"
+            placeholder="********"
+            required
+          />
         </Field>
 
-        {/* Sign up Link */}
+        {/* Register Button */}
+        <Field>
+          <Button type="submit">Create account</Button>
+        </Field>
+
+        {/* Login Link */}
         <Field>
           <FieldLabel asChild>
-            <Text>
-              Don&apos;t have an account?{' '}
+            <Text className="text-center">
+              Already have an account?{' '}
               <Link
-                href="/register"
+                href="/login"
                 className="hover:underline-primary underline-offset-4 hover:underline"
               >
-                Sign up
+                Login
               </Link>
             </Text>
           </FieldLabel>

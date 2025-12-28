@@ -1,7 +1,8 @@
 /**
- * @file login-form.tsx
- * @description Formulario de login
- * @module components/pages/login/fragments/login-form
+ * Fragmento de formulario de recuperación de contraseña
+ * Estructura básica - la lógica se implementará después
+ *
+ * @module components/pages/forgot/fragments/forgot-password-form
  */
 
 'use client'
@@ -17,7 +18,7 @@ import { Title, Text } from '@/components/atomic-design/atoms'
 // Import of utilities
 import { cn } from '@/lib/utils'
 
-export function LoginForm({
+export function ForgotPasswordForm({
   className,
   ...props
 }: React.ComponentProps<'form'>) {
@@ -26,9 +27,12 @@ export function LoginForm({
       <FieldGroup>
         <header className="flex flex-col items-center gap-1 text-center">
           <Title level={1} color="primary" className="text-2xl font-bold">
-            Login to your account
+            Forgot your password?
           </Title>
-          <Text>Enter your email below to login to your account</Text>
+          <Text>
+            Enter your email address and we&apos;ll send you a link to reset
+            your password.
+          </Text>
         </header>
         {/* Email */}
         <Field>
@@ -37,44 +41,22 @@ export function LoginForm({
           </FieldLabel>
           <Input id="email" type="email" placeholder="m@example.com" required />
         </Field>
-        {/* Password */}
+
+        {/* Submit Button */}
         <Field>
-          <div className="flex items-center">
-            <FieldLabel asChild htmlFor="password">
-              <Text>Password</Text>
-            </FieldLabel>
-            <Link
-              href="/forgot"
-              className="hover:underline-primary ml-auto underline-offset-4 hover:underline"
-            >
-              <Text color="primary" variant="small">
-                Forgot your password?
-              </Text>
-            </Link>
-          </div>
-          <Input
-            id="password"
-            type="password"
-            placeholder="********"
-            required
-          />
+          <Button type="submit">Send reset link</Button>
         </Field>
 
-        {/* Login Button */}
-        <Field>
-          <Button type="submit">Login</Button>
-        </Field>
-
-        {/* Sign up Link */}
+        {/* Back to Login Link */}
         <Field>
           <FieldLabel asChild>
-            <Text>
-              Don&apos;t have an account?{' '}
+            <Text className="text-center">
+              Remember your password?{' '}
               <Link
-                href="/register"
+                href="/login"
                 className="hover:underline-primary underline-offset-4 hover:underline"
               >
-                Sign up
+                Back to login
               </Link>
             </Text>
           </FieldLabel>
