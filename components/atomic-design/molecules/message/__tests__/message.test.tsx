@@ -15,7 +15,12 @@ jest.mock('@/components/atomic-design/atoms', () => ({
     className?: string
     [key: string]: unknown
   }) => (
-    <h4 data-testid="message-title" data-level={level} className={className} {...props}>
+    <h4
+      data-testid="message-title"
+      data-level={level}
+      className={className}
+      {...props}
+    >
       {children}
     </h4>
   ),
@@ -60,11 +65,7 @@ describe('Message', () => {
   describe('icon', () => {
     it('renderiza el icono correctamente', () => {
       render(
-        <Message
-          icon={mockIcon}
-          title="Título"
-          description="Descripción"
-        />
+        <Message icon={mockIcon} title="Título" description="Descripción" />
       )
       expect(screen.getByTestId('test-icon')).toBeInTheDocument()
     })
@@ -72,11 +73,7 @@ describe('Message', () => {
     it('renderiza cualquier ReactNode como icono', () => {
       const customIcon = <div data-testid="custom-icon">Icon</div>
       render(
-        <Message
-          icon={customIcon}
-          title="Título"
-          description="Descripción"
-        />
+        <Message icon={customIcon} title="Título" description="Descripción" />
       )
       expect(screen.getByTestId('custom-icon')).toBeInTheDocument()
     })
@@ -101,11 +98,7 @@ describe('Message', () => {
 
     it('aplica level 4 al título', () => {
       render(
-        <Message
-          icon={mockIcon}
-          title="Título"
-          description="Descripción"
-        />
+        <Message icon={mockIcon} title="Título" description="Descripción" />
       )
       const heading = screen.getByTestId('message-title')
       expect(heading).toBeInTheDocument()
@@ -133,11 +126,7 @@ describe('Message', () => {
 
     it('aplica las clases correctas a la descripción', () => {
       render(
-        <Message
-          icon={mockIcon}
-          title="Título"
-          description="Descripción"
-        />
+        <Message icon={mockIcon} title="Título" description="Descripción" />
       )
       const text = screen.getByTestId('message-text')
       expect(text).toBeInTheDocument()

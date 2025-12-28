@@ -5,4 +5,3 @@
  */
 
 export * from './fragments/forgot-password-form'
-

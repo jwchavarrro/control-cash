@@ -5,4 +5,3 @@
  */
 
 export { AuthTemplate } from './auth-form-layout'
-

@@ -30,8 +30,8 @@ export function ForgotPasswordForm({
             Forgot your password?
           </Title>
           <Text>
-            Enter your email address and we&apos;ll send you a link to reset your
-            password.
+            Enter your email address and we&apos;ll send you a link to reset
+            your password.
           </Text>
         </header>
         {/* Email */}
@@ -39,12 +39,7 @@ export function ForgotPasswordForm({
           <FieldLabel asChild htmlFor="email">
             <Text>Email</Text>
           </FieldLabel>
-          <Input
-            id="email"
-            type="email"
-            placeholder="m@example.com"
-            required
-          />
+          <Input id="email" type="email" placeholder="m@example.com" required />
         </Field>
 
         {/* Submit Button */}
@@ -70,4 +65,3 @@ export function ForgotPasswordForm({
     </form>
   )
 }
-
