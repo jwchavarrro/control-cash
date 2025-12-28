@@ -7,3 +7,4 @@
 export * from './api-error'
 export * from './auth.service'
 export * from './transactions'
+export * from './users'

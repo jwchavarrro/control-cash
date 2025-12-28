@@ -1,13 +1,22 @@
 /**
- * Página para crear una nueva transacción
- *
- * @module app/dashboard/transactions/new/page
+ * @file transactions.page.tsx
+ * @description Página para listar las transacciones
+ * @module app/dashboard/master/products/[id]/page
  */
 
-export default function NewTransactionPage() {
+// Import of components custom
+import { Header } from '@/components/atomic-design/molecules'
+
+// Import of utilities
+import { KEYWORDS } from '@/config'
+
+export default function TransactionsPage() {
   return (
-    <div>
-      <h1>Nueva Transacción</h1>
+    <div className="container mx-auto flex flex-col gap-4">
+      <Header
+        title={KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.TRANSACTIONS.TITLE}
+        text="Explore and manage all your transactions in one place, with options to review, edit, and organize efficiently."
+      />
     </div>
   )
 }

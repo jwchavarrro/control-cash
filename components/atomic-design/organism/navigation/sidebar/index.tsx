@@ -1,3 +1,11 @@
+/**
+ * Componente de sidebar de la aplicación
+ *
+ * @module components/atomic-design/organism/navigation/sidebar
+ */
+
+'use client'
+
 import {
   SidebarInset,
   SidebarProvider,
@@ -8,14 +16,22 @@ import { Separator } from '@/components/ui/separator'
 // Import of components custom
 import { AppSidebar } from '@/components/atomic-design/organism/navigation/sidebar/components'
 
+// Import of types
+import {
+  SidebarItem,
+  SidebarUser,
+} from '@/components/atomic-design/organism/navigation/sidebar/utils'
+
 interface SidebarProps extends React.ComponentProps<typeof SidebarProvider> {
+  items: SidebarItem[]
+  user: SidebarUser
   children: React.ReactNode
 }
 
-export const Sidebar = ({ children }: SidebarProps) => {
+export const Sidebar = ({ items, user, children }: SidebarProps) => {
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar items={items} user={user} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">

@@ -1,12 +1,19 @@
+/**
+ * @file layout.tsx
+ * @description Layout de la aplicación
+ * @module app/layout
+ */
+
 import type { Metadata } from 'next'
+import { QueryClientProvider } from '@/lib/query-client-provider'
+import { Toaster } from '@/components/ui/sonner'
 
 // Import of utilities
 import './globals.css'
-import { QueryClientProvider } from '@/lib/query-client-provider'
 
 export const metadata: Metadata = {
   title: 'CtrlCash - Demo',
-  description: 'CtrlCash es una aplicación de control de gastos y presupuestos',
+  description: 'CtrlCash is an expense and budget management application',
 }
 
 export default function RootLayout({
@@ -17,7 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <QueryClientProvider>{children}</QueryClientProvider>
+        <QueryClientProvider>
+          {children}
+          <Toaster />
+        </QueryClientProvider>
       </body>
     </html>
   )
