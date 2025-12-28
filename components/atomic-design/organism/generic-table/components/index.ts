@@ -4,5 +4,6 @@
  * @module components/atomic-design/organism/generic-table/components
  */
 
-export * from './page-header'
+export * from './page'
 export * from './table'
+export * from './new-button'

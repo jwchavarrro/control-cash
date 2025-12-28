@@ -21,9 +21,10 @@ import { useQuery } from '@tanstack/react-query'
 import { ActionsCell } from '@/components/atomic-design/organism/generic-table/components'
 
 // Import of types
-import { type UseGenericTableProps, type ColumnConfig } from '@/components/atomic-design/organism/generic-table/utils/types'
-
-
+import {
+  type UseGenericTableProps,
+  type ColumnConfig,
+} from '@/components/atomic-design/organism/generic-table/utils/types'
 
 export const useGenericTable = <TData extends Record<string, unknown>>({
   queryFn,
@@ -34,7 +35,6 @@ export const useGenericTable = <TData extends Record<string, unknown>>({
   enabled = true,
   actionsColumn,
 }: UseGenericTableProps<TData>) => {
-
   // States generales
   const [sorting, setSorting] = useState<SortingState>(initialSort ?? [])
   const [globalFilter, setGlobalFilter] = useState<string>('')

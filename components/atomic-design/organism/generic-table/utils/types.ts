@@ -69,4 +69,10 @@ export interface GenericTableProps<
   }
 }
 
+export type NewButtonProps = {
+  text: string
+  path?: string
+  onClick?: () => void | Promise<void>
+}
+
 export type RecordEntity<T> = T & Record<string, unknown>
