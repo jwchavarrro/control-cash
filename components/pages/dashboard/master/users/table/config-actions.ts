@@ -5,10 +5,16 @@
  */
 
 // Import of components custom
-import { EditAction } from '@/components/pages/dashboard/master/users/table/fragments';
+import {
+  EditAction,
+  DeleteAction,
+} from '@/components/pages/dashboard/master/users/table/fragments'
 
 export const CONFIG_ACTIONS = () => [
   {
     component: EditAction,
   },
-];
+  {
+    component: DeleteAction,
+  },
+]

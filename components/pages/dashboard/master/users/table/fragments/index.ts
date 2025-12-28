@@ -5,3 +5,4 @@
  */
 
 export * from './edit-action'
+export * from './delete-action'

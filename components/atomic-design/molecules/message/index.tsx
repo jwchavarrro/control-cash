@@ -3,8 +3,8 @@
  * @description: Componente molecular que combina un icono, título y descripción para mostrar mensajes.
  */
 
-import { ComponentProps } from 'react'
-import { type LucideIcon } from 'lucide-react'
+import type { ComponentProps } from 'react'
+import type { LucideIcon } from 'lucide-react'
 
 // Import of components custom
 import { Text, Title } from '@/components/atomic-design/atoms'
@@ -12,7 +12,7 @@ import { Text, Title } from '@/components/atomic-design/atoms'
 // Import of utils
 import { cn } from '@/lib/utils'
 
-export interface MessageProps {
+interface MessageProps {
   icon: LucideIcon
   iconProps?: ComponentProps<LucideIcon>
   title?: string

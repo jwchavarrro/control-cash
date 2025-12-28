@@ -4,7 +4,7 @@
  * @module components/pages/dashboard/master/users/table/fragments/edit-action
  */
 
-import { SquarePen } from 'lucide-react';
+import { Trash } from 'lucide-react'
 
 // Import of componts custom
 import { ButtonAction } from '@/components/common/generic-table';
@@ -12,14 +12,12 @@ import { ButtonAction } from '@/components/common/generic-table';
 // Import of types
 import type { User } from '@/lib/api/types';
 
-export const EditAction = ({ row }: { row: User }) => {
+export const DeleteAction = ({ row }: { row: User }) => {
 
   // Handle
-  const handleOnClickEdit = () => {
+  const handleOnClickDelete = () => {
     console.log(row);
   };
 
-  return (
-    <ButtonAction tooltipMessage='Edit' icon={SquarePen} />
-  )
+  return <ButtonAction tooltipMessage='Delete' icon={Trash} />
 };
