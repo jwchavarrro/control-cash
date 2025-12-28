@@ -22,7 +22,7 @@ export default function DashboardLayout({
 }: Readonly<DashboardLayoutProps>) {
   return (
     <AuthCheck>
-      <Sidebar items={NAVIGATION_NAV_MAIN.NAV_MAIN}>{children}</Sidebar>
+      <Sidebar items={NAVIGATION_NAV_MAIN.NAV_MAIN} user={{ name: 'John Doe', email: 'john.doe@example.com', avatar: 'https://github.com/shadcn.png' }}>{children}</Sidebar>
     </AuthCheck>
   )
 }

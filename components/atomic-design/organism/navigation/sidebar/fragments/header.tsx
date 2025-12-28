@@ -8,7 +8,12 @@ import { HandCoinsIcon } from 'lucide-react'
 import Link from 'next/link'
 
 // Import of utilities
-import { useSidebar, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar'
+import {
+  useSidebar,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+} from '@/components/ui/sidebar'
 
 export const Header = () => {
   // Hooks
@@ -27,7 +32,7 @@ export const Header = () => {
           <div className="flex items-center justify-center">
             <Link
               href="#"
-              className="font-title flex items-center gap-2 font-bold text-white hover:text-white/50 text-xl"
+              className="font-title flex items-center gap-2 text-xl font-bold text-white hover:text-white/50"
             >
               <HandCoinsIcon className="size-6" />
               {logoCtrlCash && <span>CtrlCash</span>}
@@ -37,4 +42,4 @@ export const Header = () => {
       </SidebarMenuItem>
     </SidebarMenu>
   )
-};
+}

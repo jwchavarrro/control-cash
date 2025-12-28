@@ -23,15 +23,14 @@ import {
 } from '@/components/atomic-design/organism/navigation/sidebar/fragments'
 
 // Import of utilities
-import { SidebarItem } from '../utils'
-
+import { SidebarItem, SidebarUser } from '../utils'
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   items: SidebarItem[]
+  user: SidebarUser
 }
 
-export function AppSidebar({ items }: Readonly<AppSidebarProps>) {
-
+export function AppSidebar({ items, user }: Readonly<AppSidebarProps>) {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -41,7 +40,7 @@ export function AppSidebar({ items }: Readonly<AppSidebarProps>) {
         <NavMain items={items} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={{ name: '', email: '', avatar: '' }} />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

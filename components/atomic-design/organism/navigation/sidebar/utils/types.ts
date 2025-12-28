@@ -4,7 +4,7 @@
  * @module components/atomic-design/organism/navigation/sidebar/utils/types
  */
 
-import { LucideIcon } from "lucide-react"
+import { LucideIcon } from 'lucide-react'
 
 export interface SidebarItem {
   title: string
@@ -12,4 +12,10 @@ export interface SidebarItem {
   icon?: LucideIcon
   isActive?: boolean
   items?: SidebarItem[]
+}
+
+export interface SidebarUser {
+  name: string
+  email: string
+  avatar: string
 }

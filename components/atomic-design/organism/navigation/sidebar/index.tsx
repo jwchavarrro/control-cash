@@ -17,17 +17,18 @@ import { Separator } from '@/components/ui/separator'
 import { AppSidebar } from '@/components/atomic-design/organism/navigation/sidebar/components'
 
 // Import of types
-import { SidebarItem } from '@/components/atomic-design/organism/navigation/sidebar/utils'
+import { SidebarItem, SidebarUser } from '@/components/atomic-design/organism/navigation/sidebar/utils'
 
 interface SidebarProps extends React.ComponentProps<typeof SidebarProvider> {
   items: SidebarItem[]
+  user: SidebarUser
   children: React.ReactNode
 }
 
-export const Sidebar = ({ items, children }: SidebarProps) => {
+export const Sidebar = ({ items, user, children }: SidebarProps) => {
   return (
     <SidebarProvider>
-      <AppSidebar items={items} />
+      <AppSidebar items={items} user={user} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">

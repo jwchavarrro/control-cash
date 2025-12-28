@@ -4,7 +4,7 @@
  * @module components/pages/dashboard/utils/constants
  */
 
-import { ArrowRightLeft,LayoutDashboard, Birdhouse } from 'lucide-react'
+import { ArrowRightLeft, LayoutDashboard, Birdhouse } from 'lucide-react'
 
 // Import of utilities
 import { KEYWORDS, ROUTES_PAGES } from '@/config'

@@ -11,10 +11,8 @@
 
 export const API_ENDPOINTS = {
   PAGES: {
-    TRANSACTIONS: {
-    },
-    MASTER: {
-    },
+    TRANSACTIONS: {},
+    MASTER: {},
   },
   COMMON: {
     LIST_USERS: `/users`,

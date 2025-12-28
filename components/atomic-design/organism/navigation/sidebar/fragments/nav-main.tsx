@@ -36,7 +36,9 @@ interface NavMainProps {
 export function NavMain({ items }: Readonly<NavMainProps>) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className="text-sidebar-accent dark:text-foreground">Menu</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-sidebar-accent dark:text-foreground">
+        Menu
+      </SidebarGroupLabel>
       <SidebarMenu>
         {items.map(item => {
           const hasSubItems = item.items && item.items.length > 0
@@ -54,10 +56,13 @@ export function NavMain({ items }: Readonly<NavMainProps>) {
                   <CollapsibleTrigger asChild>
                     <SidebarMenuButton
                       tooltip={item.title}
-                      className="leading-4 text-sidebar-accent dark:text-foreground"
+                      className="text-sidebar-accent dark:text-foreground leading-4"
                     >
                       {item.icon && <item.icon />}
-                      <Link href={item.url || '/'} className="flex items-center w-full">
+                      <Link
+                        href={item.url || '/'}
+                        className="flex w-full items-center"
+                      >
                         <span>{item.title}</span>
                       </Link>
                       <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -71,7 +76,10 @@ export function NavMain({ items }: Readonly<NavMainProps>) {
                             asChild
                             className="text-sidebar-accent dark:text-foreground"
                           >
-                            <Link href={subItem.url || '/'} className="flex items-center w-full">
+                            <Link
+                              href={subItem.url || '/'}
+                              className="flex w-full items-center"
+                            >
                               <span>{subItem.title}</span>
                             </Link>
                           </SidebarMenuSubButton>
@@ -90,13 +98,16 @@ export function NavMain({ items }: Readonly<NavMainProps>) {
                 asChild
                 isActive={isActive}
                 className={cn(
-                  'leading-4 text-sidebar-accent dark:text-foreground',
+                  'text-sidebar-accent dark:text-foreground leading-4',
                   isActive &&
-                    'font-medium bg-sidebar-accent text-sidebar-accent-foreground'
+                    'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
                 )}
                 tooltip={item.title}
               >
-                <Link href={item.url || '/'} className="flex items-center w-full">
+                <Link
+                  href={item.url || '/'}
+                  className="flex w-full items-center"
+                >
                   {item.icon && <item.icon />}
                   {item.title}
                 </Link>
