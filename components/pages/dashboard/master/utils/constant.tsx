@@ -7,9 +7,7 @@
 import { Package, UserCog } from 'lucide-react'
 
 // Import of utilities
-import { ROUTES_PAGES,KEYWORDS } from '@/config'
-
-
+import { ROUTES_PAGES, KEYWORDS } from '@/config'
 
 export type MasterCardItem = {
   icon: React.ReactNode
@@ -25,7 +23,7 @@ export const MASTER_CARD_LIST: MasterCardItem[] = [
     detail:
       'Comprehensive management and administration of all product accounts, including product creation, modification, and access control.',
 
-      link: ROUTES_PAGES.MASTER.PRODUCTS.LIST,
+    link: ROUTES_PAGES.MASTER.PRODUCTS.LIST,
   },
   {
     icon: <UserCog />,
@@ -33,6 +31,6 @@ export const MASTER_CARD_LIST: MasterCardItem[] = [
     detail:
       'Comprehensive management and administration of all user accounts, including user creation, modification, and access control.',
 
-      link: ROUTES_PAGES.MASTER.USERS.LIST,
+    link: ROUTES_PAGES.MASTER.USERS.LIST,
   },
 ]

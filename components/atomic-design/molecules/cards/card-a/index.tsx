@@ -12,7 +12,6 @@ import { useRouter } from 'next/navigation'
 import { Card } from '@/components/atomic-design/molecules/cards/card'
 import { Text, Title } from '@/components/atomic-design/atoms'
 
-
 interface CardAProps {
   readonly icon: React.ReactNode
   readonly title: string
@@ -21,9 +20,8 @@ interface CardAProps {
 }
 
 export const CardA = ({ icon, title, description, link }: CardAProps) => {
-
   // Hooks
-  const router = useRouter();
+  const router = useRouter()
 
   // Handlers
   /**
@@ -37,7 +35,7 @@ export const CardA = ({ icon, title, description, link }: CardAProps) => {
   return (
     <Card
       as="button"
-      className="relative hover:bg-primary/10 border-primary overflow-hidden transition-all duration-300"
+      className="hover:bg-primary/10 border-primary relative overflow-hidden transition-all duration-300"
       onClick={() => handleClick(link)}
     >
       {/* children */}

@@ -55,16 +55,12 @@ export const Header = ({
   return (
     <section className={cn('space-y-2', className)}>
       {/* Title and text */}
-      <div className='space-y-2'>
+      <div className="space-y-2">
         <Title
           level={level}
           variant={titleVariant}
           color={titleColor}
-          className={cn(
-            alignClasses[titleAlign],
-            'm-0! p-0!',
-            titleClassName
-          )}
+          className={cn(alignClasses[titleAlign], 'm-0! p-0!', titleClassName)}
         >
           {title}
         </Title>
@@ -72,11 +68,7 @@ export const Header = ({
           <Text
             variant={textVariant}
             color={textColor}
-            className={cn(
-              alignClasses[textAlign],
-              'm-0! p-0!',
-              textClassName
-            )}
+            className={cn(alignClasses[textAlign], 'm-0! p-0!', textClassName)}
           >
             {text}
           </Text>

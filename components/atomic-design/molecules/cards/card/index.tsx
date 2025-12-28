@@ -25,14 +25,8 @@ type CardAsDiv = CardBaseProps & {
 
 export type CardProps = CardAsButton | CardAsDiv
 
-export function Card({
-  children,
-  className,
-  as = 'div',
-  ...props
-}: CardProps) {
-  const baseClasses =
-    'rounded-xl border min-h-20 shadow-lg'
+export function Card({ children, className, as = 'div', ...props }: CardProps) {
+  const baseClasses = 'rounded-xl border min-h-20 shadow-lg'
 
   if (as === 'button') {
     return (

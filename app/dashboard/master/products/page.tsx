@@ -10,7 +10,6 @@ import { Header } from '@/components/atomic-design/molecules'
 // Import of utilities
 import { KEYWORDS } from '@/config'
 
-
 export default function ProductsPage() {
   return (
     <div className="container mx-auto flex flex-col gap-4">
