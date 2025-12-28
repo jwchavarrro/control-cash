@@ -12,7 +12,7 @@ import {
 import { SlashIcon } from 'lucide-react'
 
 // Import of types
-import { BreadcrumbItem as BreadcrumbItemType } from '@/types/navigation'
+import { BreadcrumbItem as BreadcrumbItemType } from '@/components/atomic-design/organism/navigation/breadcrumb/utils'
 
 interface BreadcrumbEllipsisMenuProps {
   ellipsisItems: BreadcrumbItemType[]

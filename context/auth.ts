@@ -1,16 +1,16 @@
-import { atom, useAtom } from 'jotai';
+import { atom, useAtom } from 'jotai'
 
-const isLoggingOutAtom = atom<boolean>(false);
-const isVerifyingSignOutAtom = atom<boolean>(false);
+const isLoggingOutAtom = atom<boolean>(false)
+const isVerifyingSignOutAtom = atom<boolean>(false)
 
 export const useIsLoggingOut = () => {
-  const [isLoggingOut, setIsLoggingOut] = useAtom(isLoggingOutAtom);
-  return { isLoggingOut, setIsLoggingOut };
-};
+  const [isLoggingOut, setIsLoggingOut] = useAtom(isLoggingOutAtom)
+  return { isLoggingOut, setIsLoggingOut }
+}
 
 export const useIsVerifyingSignOut = () => {
   const [isVerifyingSignOut, setIsVerifyingSignOut] = useAtom(
     isVerifyingSignOutAtom
-  );
-  return { isVerifyingSignOut, setIsVerifyingSignOut };
-};
+  )
+  return { isVerifyingSignOut, setIsVerifyingSignOut }
+}

@@ -13,7 +13,10 @@ import { usePathname } from 'next/navigation'
 import { NAVIGATION_NAV_MAIN } from '@/components/pages/dashboard/utils/constants'
 
 // Import of types
-import { BreadcrumbItem, NavItem } from '@/types/navigation'
+import {
+  BreadcrumbItem,
+  NavItem,
+} from '@/components/atomic-design/organism/navigation/breadcrumb/utils'
 
 /**
  * Capitaliza la primera letra de un string
@@ -38,7 +41,7 @@ const generateBreadcrumbs = (
   navItems: NavItem[]
 ): BreadcrumbItem[] => {
   const breadcrumbs: BreadcrumbItem[] = [
-    { label: 'Inicio', href: '/', id: crypto.randomUUID() },
+    { label: 'Home', href: '/', id: crypto.randomUUID() },
   ]
 
   if (pathname === '/') {

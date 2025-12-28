@@ -13,12 +13,14 @@ import { GenericTable } from '@/components/atomic-design/organism/generic-table'
 // Import of utilities
 import { ROUTES_PAGES, KEYWORDS } from '@/config'
 import { getAllTransactions } from '@/lib/api/services/transactions/get-all.transaction'
-import { CONFIG_COLUMNS, CONFIG_ACTIONS } from '@/components/pages/dashboard/transactions/table'
+import {
+  CONFIG_COLUMNS,
+  CONFIG_ACTIONS,
+} from '@/components/pages/dashboard/transactions/table'
 
 // Import of types
 import type { RecordEntity } from '@/components/atomic-design/organism/generic-table/utils/types'
 import type { Transaction } from '@/lib/api/types'
-
 
 export default function TransactionsPage() {
   return (

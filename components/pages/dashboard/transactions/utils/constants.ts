@@ -4,7 +4,7 @@
  * @module components/pages/dashboard/transactions/utils/constants
  */
 
-import { ENUM_TRANSACTION_TYPE } from "@/lib/api";
+import { ENUM_TRANSACTION_TYPE } from '@/lib/api'
 
 /**
  * @constant TAB_TRANSACTIONS_OPTIONS
@@ -13,4 +13,4 @@ import { ENUM_TRANSACTION_TYPE } from "@/lib/api";
 export const TAB_TRANSACTIONS_OPTIONS = {
   INCOME: ENUM_TRANSACTION_TYPE.INCOME,
   EXPENSE: ENUM_TRANSACTION_TYPE.EXPENSE,
-} as const;
+} as const
