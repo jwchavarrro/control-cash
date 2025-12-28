@@ -27,4 +27,7 @@ export const KEYWORDS = {
       },
     },
   },
+  COMMON: {
+    NEW: 'New',
+  },
 }

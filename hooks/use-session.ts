@@ -28,7 +28,7 @@ export interface SessionInfo {
 
 export function useSession(): SessionInfo {
   const router = useRouter()
-  
+
   /**
    * @name getInitialSession
    * @description Obtiene la sesión inicial
@@ -70,7 +70,8 @@ export function useSession(): SessionInfo {
    * @description Estado de la sesión
    * @type {Omit<SessionInfo, 'logout'>}
    */
-  const [session, setSession] = useState<Omit<SessionInfo, 'logout'>>(getInitialSession)
+  const [session, setSession] =
+    useState<Omit<SessionInfo, 'logout'>>(getInitialSession)
 
   /**
    * @name updateSession
@@ -135,7 +136,10 @@ export function useSession(): SessionInfo {
     return () => {
       if (globalThis.window !== undefined) {
         globalThis.removeEventListener('storage', handleStorageChange)
-        globalThis.removeEventListener('session-change', handleCustomStorageChange)
+        globalThis.removeEventListener(
+          'session-change',
+          handleCustomStorageChange
+        )
       }
     }
   }, [updateSession])
@@ -147,7 +151,7 @@ export function useSession(): SessionInfo {
   const handleLogout = useCallback(() => {
     try {
       logoutAuth()
-      
+
       /**
        * @name handleCustomStorageChange
        * @description Disparar evento personalizado para actualizar otros componentes

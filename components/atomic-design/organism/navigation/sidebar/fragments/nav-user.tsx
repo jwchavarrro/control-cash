@@ -27,7 +27,6 @@ import { useSession } from '@/hooks'
 // Import of types
 import { SidebarUser } from '../utils'
 
-
 interface NavUserProps {
   user: SidebarUser
 }
@@ -62,7 +61,9 @@ export function NavUser({ user }: Readonly<NavUserProps>) {
                 </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{getFirstsWords(name, 2)}</span>
+                <span className="truncate font-medium">
+                  {getFirstsWords(name, 2)}
+                </span>
                 <span className="truncate text-xs">{email}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
