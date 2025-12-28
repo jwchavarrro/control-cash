@@ -5,3 +5,4 @@
  */
 
 export { AuthCheck } from './auth-check'
+export { FormFieldError } from './form-field-error'
