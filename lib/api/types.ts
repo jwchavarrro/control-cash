@@ -45,14 +45,6 @@ export interface TransactionFilters {
   userId?: string
 }
 
-export type SortField = 'date' | 'amount' | 'title'
-export type SortOrder = 'asc' | 'desc'
-
-export interface SortOptions {
-  field: SortField
-  order: SortOrder
-}
-
 // Tipos para Autenticación (MockAPI)
 export interface LoginRequest {
   email: string
