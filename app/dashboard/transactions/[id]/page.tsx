@@ -1,21 +1,13 @@
 /**
- * Página para editar una transacción
- *
+ * @file transactions.page.tsx
+ * @description Página para listar las transacciones
  * @module app/dashboard/transactions/[id]/page
  */
 
-interface EditTransactionPageProps {
-  params: Promise<{ id: string }>
-}
-
-export default async function EditTransactionPage({
-  params,
-}: EditTransactionPageProps) {
-  const { id } = await params
-
+export default function CreateEditTransactionPage() {
   return (
     <div>
-      <h1>Editar Transacción {id}</h1>
+      <h1>Crear/Editar Transacción</h1>
     </div>
   )
 }

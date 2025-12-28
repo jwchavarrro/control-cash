@@ -1,9 +1,7 @@
 /**
- * Layout de la dashboard
- * Protege todas las rutas del dashboard con autenticación
- *
- * @param {React.ReactNode} children - Componentes hijos
- * @returns {JSX.Element} Layout de la dashboard
+ * @file dashboard.layout.tsx
+ * @description Layout del dashboard
+ * @module app/dashboard/layout
  */
 
 'use client'

@@ -1,9 +1,9 @@
 /**
- * Página principal del dashboard
- *
+ * @file dashboard.page.tsx
+ * @description Página del dashboard
  * @module app/dashboard/page
  */
 
 export default function DashboardPage() {
-  return <div>dashboard page</div>
+  return <div>Dashboard Page</div>
 }
