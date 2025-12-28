@@ -1,7 +1,6 @@
 /**
- * Template de layout para formularios de autenticación
- * Estructura base reutilizable para páginas de login, registro y recuperación de contraseña
- *
+ * @file auth-form-layout.tsx
+ * @description Template de layout para formularios de autenticación
  * @module components/atomic-design/template/auth-form-layout
  */
 
@@ -52,10 +51,7 @@ export function AuthTemplate({
         {/* Column 2 - Background Image */}
         <div className="bg-muted relative hidden lg:block">
           <div className="flex h-full items-center justify-center">
-            <Icon
-              className="text-muted-foreground/10 size-96"
-              {...iconProps}
-            />
+            <Icon className="text-muted-foreground/10 size-96" {...iconProps} />
           </div>
         </div>
       </div>
