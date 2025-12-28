@@ -22,13 +22,7 @@ export const NewButton = ({ newButton }: { newButton: NewButtonProps }) => {
   }
 
   if (newButton.onClick) {
-    return (
-      <Button
-        onClick={newButton.onClick}
-      >
-        {newButton.text}
-      </Button>
-    )
+    return <Button onClick={newButton.onClick}>{newButton.text}</Button>
   }
 
   return null

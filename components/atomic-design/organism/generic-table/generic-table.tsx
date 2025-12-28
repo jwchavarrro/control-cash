@@ -1,11 +1,19 @@
-import { Skeleton } from '@/components/ui/skeleton'
+/**
+ * @file generic-table.tsx
+ * @description Componente GenericTable
+ * @module components/atomic-design/organism/generic-table/generic-table
+ */
 
 // Import of components custom
 import {
   PageHeaderComponent,
   PaginationComponent,
 } from '@/components/atomic-design/organism/generic-table/components'
-import { TableComponent } from '@/components/atomic-design/organism/generic-table/fragments/table-component'
+import {
+  TableSkeleton,
+  TableError,
+  TableComponent,
+} from '@/components/atomic-design/organism/generic-table/fragments'
 
 // Import of custom hooks
 import { useGenericTable } from '@/components/atomic-design/organism/generic-table/hooks/use-generic-table'
@@ -37,33 +45,20 @@ export const GenericTable = <TData extends Record<string, unknown>>({
     })
 
   if (isLoading) {
-    return (
-      <div className="space-y-4">
-        <div className="flex justify-between">
-          <Skeleton className="h-8 w-1/4" />
-          <div className="flex space-x-2">
-            <Skeleton className="h-8 w-20" />
-            <Skeleton className="h-8 w-20" />
-          </div>
-        </div>
-        <Skeleton className="h-64 w-full" />
-        <div className="flex justify-end">
-          <Skeleton className="h-8 w-1/3" />
-        </div>
-      </div>
-    )
+    return <TableSkeleton columns={columnConfig.length} />
   }
 
   if (error) {
     return (
-      <div className="rounded border border-red-600 p-4 text-red-600">
-        Error loading data. Please check the console.
-      </div>
+      <TableError
+        title="Error loading data"
+        description="An error occurred while trying to load the data. Please try again later."
+      />
     )
   }
 
   return (
-    <div>
+    <div className="space-y-4">
       <PageHeaderComponent
         title={title}
         globalFilter={globalFilter}

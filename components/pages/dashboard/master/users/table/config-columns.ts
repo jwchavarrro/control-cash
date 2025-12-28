@@ -5,7 +5,10 @@
  */
 
 // Import of types
-import type { ColumnConfig, RecordEntity } from '@/components/atomic-design/organism/generic-table/utils/types'
+import type {
+  ColumnConfig,
+  RecordEntity,
+} from '@/components/atomic-design/organism/generic-table/utils/types'
 import type { User } from '@/lib/api/types'
 
 export const CONFIG_COLUMNS: ColumnConfig<RecordEntity<User>>[] = [

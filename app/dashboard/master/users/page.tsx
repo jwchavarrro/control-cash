@@ -12,7 +12,7 @@ import { GenericTable } from '@/components/atomic-design/organism/generic-table'
 import type { RecordEntity } from '@/components/atomic-design/organism/generic-table/utils/types'
 
 // Import of utilities
-import { KEYWORDS } from '@/config'
+import { KEYWORDS, ROUTES_PAGES } from '@/config'
 import { CONFIG_COLUMNS } from '@/components/pages/dashboard/master/users'
 
 // Import of custom service
@@ -37,7 +37,7 @@ export default function UsersPage() {
         queryKey={['users']}
         newButton={{
           text: `${KEYWORDS.COMMON.NEW} ${KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.USERS}`,
-          onClick: () => {},
+          path: ROUTES_PAGES.MASTER.USERS.CREATE,
         }}
       />
     </div>

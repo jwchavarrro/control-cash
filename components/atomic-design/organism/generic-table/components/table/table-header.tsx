@@ -6,7 +6,9 @@
 
 import { flexRender, type Table } from '@tanstack/react-table'
 import { TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { ChevronDown, ChevronUp, Minus } from 'lucide-react'
+
+// Import of components custom
+import { SortIndicator } from '@/components/atomic-design/organism/generic-table/components'
 
 interface TableHeaderProps<TData extends Record<string, unknown>> {
   table: Table<TData>
@@ -15,17 +17,6 @@ interface TableHeaderProps<TData extends Record<string, unknown>> {
 export const TableHeaderComponent = <TData extends Record<string, unknown>>({
   table,
 }: TableHeaderProps<TData>) => {
-  const renderSortIndicator = (sortDirection: false | 'asc' | 'desc') => {
-    if (sortDirection === 'asc') {
-      return <ChevronUp className="h-4 w-4 text-gray-500" />
-    }
-
-    if (sortDirection === 'desc') {
-      return <ChevronDown className="h-4 w-4 text-gray-500" />
-    }
-    return <Minus className="h-4 w-4 text-gray-300" />
-  }
-
   return (
     <TableHeader>
       {table.getHeaderGroups().map(headerGroup => (
@@ -59,7 +50,7 @@ export const TableHeaderComponent = <TData extends Record<string, unknown>>({
                     </span>
                     {canSort && (
                       <div className="ml-2 flex h-4 w-4 items-center justify-center transition-all duration-200">
-                        {renderSortIndicator(sortDirection)}
+                        <SortIndicator sortDirection={sortDirection} />
                       </div>
                     )}
                   </div>

@@ -5,5 +5,7 @@
  */
 
 export * from './generic-table'
-export * from './hooks/use-generic-table'
+export * from './hooks'
+export * from './fragments'
+export * from './components'
 export * from './utils'

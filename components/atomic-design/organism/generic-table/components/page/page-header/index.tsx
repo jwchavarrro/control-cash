@@ -33,7 +33,8 @@ export const PageHeaderComponent = ({
           {title}
         </Title>
       )}
-      <div className="flex items-center justify-between py-4">
+      <div className="flex items-center justify-between">
+        {/* Global filter */}
         <div className="flex items-center gap-2">
           <div className="relative">
             <Search className="text-muted-foreground absolute top-1/2 left-2 h-4 w-4 -translate-y-1/2" />
@@ -48,6 +49,7 @@ export const PageHeaderComponent = ({
           </div>
         </div>
 
+        {/* New button */}
         {newButton && <NewButton newButton={newButton} />}
       </div>
     </div>

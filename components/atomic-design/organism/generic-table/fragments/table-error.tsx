@@ -4,33 +4,26 @@
  * @module components/atomic-design/organism/generic-table/fragments/table-error
  */
 
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from '@/components/ui/alert';
-import { AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
 interface TableErrorProps {
-  title?: string;
-  description?: string;
+  title: string
+  description: string
 }
 
-export const TableError = ({
-  title = 'Error al cargar los datos',
-  description = 'Ha ocurrido un error al intentar cargar los datos. Por favor, intente nuevamente más tarde.',
-}: TableErrorProps) => {
+export const TableError = ({ title, description }: TableErrorProps) => {
   return (
-    <div className='w-full p-4 animate-in slide-in-from-bottom-10 duration-300'>
+    <div>
       <Alert
-        variant='destructive'
-        className='border-destructive'
-        data-testid='table-error-message'
+        variant="destructive"
+        className="border-destructive"
+        data-testid="table-error-message"
       >
-        <AlertCircle className='h-4 w-4' />
+        <AlertCircle className="h-4 w-4" />
         <AlertTitle>{title}</AlertTitle>
         <AlertDescription>{description}</AlertDescription>
       </Alert>
     </div>
-  );
-};
+  )
+}
