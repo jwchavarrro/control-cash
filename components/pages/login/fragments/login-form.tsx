@@ -1,7 +1,6 @@
 /**
- * Fragmento de formulario de login
- * Estructura básica - la lógica se implementará después
- *
+ * @file login-form.tsx
+ * @description Formulario de login
  * @module components/pages/login/fragments/login-form
  */
 
