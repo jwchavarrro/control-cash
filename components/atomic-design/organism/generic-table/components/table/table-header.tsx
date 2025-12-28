@@ -8,6 +8,7 @@ import { flexRender, type Table } from '@tanstack/react-table'
 import { TableHead, TableHeader, TableRow } from '@/components/ui/table'
 
 // Import of components custom
+import { Text } from '@/components/atomic-design/atoms'
 import { SortIndicator } from '@/components/atomic-design/organism/generic-table/components'
 
 interface TableHeaderProps<TData extends Record<string, unknown>> {
@@ -21,7 +22,7 @@ export const TableHeaderComponent = <TData extends Record<string, unknown>>({
     <TableHeader>
       {table.getHeaderGroups().map(headerGroup => (
         <TableRow key={headerGroup.id}>
-          {headerGroup.headers.map(header => {
+          {headerGroup?.headers?.map(header => {
             const canSort = header.column.getCanSort()
             const sortDirection = header.column.getIsSorted()
 
@@ -29,29 +30,28 @@ export const TableHeaderComponent = <TData extends Record<string, unknown>>({
               <TableHead
                 key={header.id}
                 colSpan={header.colSpan}
-                className="p-2 text-center"
+                className="p-2 text-center bg-primary text-primary-foreground"
               >
                 {header.isPlaceholder ? null : (
                   <div
-                    className={`flex items-center justify-center ${
+                    className={`flex items-center justify-center gap-2 ${
                       canSort ? 'group cursor-pointer select-none' : ''
                     }`}
+                    role={canSort ? 'button' : undefined}
                     onClick={
                       canSort
                         ? header.column.getToggleSortingHandler()
                         : undefined
                     }
                   >
-                    <span className="font-medium">
+                    <Text variant="small">
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
-                    </span>
+                    </Text>
                     {canSort && (
-                      <div className="ml-2 flex h-4 w-4 items-center justify-center transition-all duration-200">
                         <SortIndicator sortDirection={sortDirection} />
-                      </div>
                     )}
                   </div>
                 )}

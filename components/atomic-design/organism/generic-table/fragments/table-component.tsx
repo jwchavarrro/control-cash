@@ -21,7 +21,7 @@ export const TableComponent = <TData extends Record<string, unknown>>({
   table,
 }: TableComponentProps<TData>) => {
   return (
-    <div className="rounded-md border">
+    <div className="overflow-hidden rounded-md border">
       <div className="w-full overflow-auto">
         <table className="w-full table-auto">
           <TableHeaderComponent table={table} />
