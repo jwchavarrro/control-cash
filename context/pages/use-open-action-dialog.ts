@@ -1,8 +1,14 @@
+/**
+ * @file use-open-action-dialog.ts
+ * @description Contexto para el uso del diálogo de acción
+ * @module context/pages/use-open-action-dialog
+ */
+
 import { context, useContext } from '@/context';
 import { SetStateAction } from 'react';
 
 // Imports of types
-import { ENUM_ACTION_TYPE } from '@/types';
+import { ENUM_ACTION_TYPE } from '@/app/utils';
 
 interface ActionDialogState {
   open: boolean;
@@ -16,7 +22,7 @@ const initialState: ActionDialogState = {
 
 const actionDialogContext = context<ActionDialogState>(initialState);
 
-const useOpenActionDialog = () => {
+export const useOpenActionDialog = () => {
   const [state, setState] = useContext(actionDialogContext);
 
   return {
@@ -42,5 +48,3 @@ const useOpenActionDialog = () => {
       })),
   };
 };
-
-export { useOpenActionDialog };
