@@ -18,8 +18,15 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar'
 
+// Import of utilities
+import { getFirstsWords } from '@/utils'
+
+// Import of hooks
+import { useSession } from '@/hooks'
+
 // Import of types
 import { SidebarUser } from '../utils'
+
 
 interface NavUserProps {
   user: SidebarUser
@@ -28,6 +35,9 @@ interface NavUserProps {
 export function NavUser({ user }: Readonly<NavUserProps>) {
   // Hooks
   const { isMobile } = useSidebar()
+
+  // Implement of custom hooks
+  const { logout } = useSession()
 
   /**
    * @name user
@@ -52,7 +62,7 @@ export function NavUser({ user }: Readonly<NavUserProps>) {
                 </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{name}</span>
+                <span className="truncate font-medium">{getFirstsWords(name, 2)}</span>
                 <span className="truncate text-xs">{email}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
@@ -73,13 +83,15 @@ export function NavUser({ user }: Readonly<NavUserProps>) {
                   </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">{name}</span>
+                  <span className="truncate font-medium">
+                    {getFirstsWords(name, 2)}
+                  </span>
                   <span className="truncate text-xs">{email}</span>
                 </div>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => logout()}>
               <LogOut />
               Log out
             </DropdownMenuItem>
