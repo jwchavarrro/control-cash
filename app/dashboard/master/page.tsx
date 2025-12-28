@@ -18,7 +18,7 @@ export default function MasterPage() {
     <div className="container mx-auto flex flex-col gap-4">
       <Header
         title={KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.TITLE}
-        text="Enter the module you want to manage"
+        text="Enter the module you want to manage."
         
       />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
