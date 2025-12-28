@@ -6,4 +6,3 @@
 
 export * from './transactions-table-income'
 export * from './transactions-table-expense'
-

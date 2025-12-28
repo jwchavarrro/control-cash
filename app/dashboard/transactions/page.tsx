@@ -27,7 +27,6 @@ import type { ENUM_TRANSACTION_TYPE } from '@/lib/api/types'
 import { ENUM_TRANSACTION_TYPE as TransactionType } from '@/lib/api/types'
 
 export default function TransactionsPage() {
-
   // Import of context
   const { selectedTabTransactions, setSelectedTabTransactions } =
     useSelectedTabTransactions()

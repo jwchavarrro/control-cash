@@ -1,26 +1,26 @@
-import { memo, useMemo } from 'react';
+import { memo, useMemo } from 'react'
 
 // Import of utilities
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 import {
   Tabs as TabsShadcn,
   TabsList,
   TabsTrigger,
   TabsContent,
-} from '@/components/ui/tabs';
+} from '@/components/ui/tabs'
 
-type TabValue = string | number;
+type TabValue = string | number
 
 interface TabsProps {
-  options: TabValue[];
-  content?: Record<TabValue, React.ReactNode>;
-  selectedItem: TabValue;
-  setSelectedItem: (item: TabValue) => void;
-  extraClassName?: string;
-  extraClassNameTab?: string;
-  disabledItems?: TabValue[];
-  disabled?: boolean;
+  options: TabValue[]
+  content?: Record<TabValue, React.ReactNode>
+  selectedItem: TabValue
+  setSelectedItem: (item: TabValue) => void
+  extraClassName?: string
+  extraClassNameTab?: string
+  disabledItems?: TabValue[]
+  disabled?: boolean
 }
 
 export const Tabs = memo(
@@ -34,14 +34,14 @@ export const Tabs = memo(
     disabledItems = [],
     content,
   }: TabsProps) => {
-    const selectedItemString = selectedItem.toString();
+    const selectedItemString = selectedItem.toString()
 
     const tabTriggers = useMemo(
       () =>
-        options?.map((item) => {
-          const itemString = item.toString();
-          const isSelected = selectedItem === item;
-          const isDisabled = disabled || disabledItems.includes(item);
+        options?.map(item => {
+          const itemString = item.toString()
+          const isSelected = selectedItem === item
+          const isDisabled = disabled || disabledItems.includes(item)
 
           return (
             <TabsTrigger
@@ -59,12 +59,12 @@ export const Tabs = memo(
           )
         }),
       [options, selectedItem, extraClassNameTab, disabled, disabledItems]
-    );
+    )
 
     const tabContent = useMemo(
       () =>
         content &&
-        options.map((item) =>
+        options.map(item =>
           content[item] ? (
             <TabsContent key={item} value={item.toString()}>
               {content[item]}
@@ -72,7 +72,7 @@ export const Tabs = memo(
           ) : null
         ),
       [content, options]
-    );
+    )
 
     return (
       <TabsShadcn
@@ -99,6 +99,6 @@ export const Tabs = memo(
       </TabsShadcn>
     )
   }
-);
+)
 
-Tabs.displayName = 'Tabs';
+Tabs.displayName = 'Tabs'
