@@ -33,21 +33,20 @@ export const authService = {
    * @throws {ApiError} Si las credenciales son inválidas
    */
   async login(credentials: LoginRequest): Promise<LoginResponse> {
-    // Buscar usuario por email
-    const response = await fetch(
-      `${API_CONFIG.mockapi.endpoints.users}?email=${encodeURIComponent(credentials.email)}`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    )
+    // Obtener todos los usuarios y filtrar en el cliente
+    const response = await fetch(API_CONFIG.mockapi.endpoints.users, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
 
     const users: User[] = await handleResponse<User[]>(response)
 
-    // Verificar que existe el usuario
-    const user = users.find(u => u.email === credentials.email)
+    // Buscar usuario por email (filtrado en cliente)
+    const user = users.find(
+      u => u.email.toLowerCase() === credentials.email.toLowerCase()
+    )
     if (!user) {
       throw new Error('Invalid email or password')
     }
@@ -79,18 +78,19 @@ export const authService = {
    */
   async register(credentials: RegisterRequest): Promise<LoginResponse> {
     // Verificar si el usuario ya existe
-    const checkResponse = await fetch(
-      `${API_CONFIG.mockapi.endpoints.users}?email=${encodeURIComponent(credentials.email)}`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    )
+    // Obtener todos los usuarios y filtrar en el cliente
+    const checkResponse = await fetch(API_CONFIG.mockapi.endpoints.users, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
 
-    const existingUsers: User[] = await handleResponse<User[]>(checkResponse)
-    if (existingUsers.length > 0) {
+    const allUsers: User[] = await handleResponse<User[]>(checkResponse)
+    const existingUser = allUsers.find(
+      u => u.email.toLowerCase() === credentials.email.toLowerCase()
+    )
+    if (existingUser) {
       throw new Error('User with this email already exists')
     }
 
