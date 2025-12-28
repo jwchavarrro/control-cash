@@ -4,6 +4,8 @@
  * @module app/dashboard/master/products/[id]/page
  */
 
+'use client'
+
 // Import of components custom
 import { Header } from '@/components/atomic-design/molecules'
 import { GenericTable } from '@/components/atomic-design/organism/generic-table'

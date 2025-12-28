@@ -13,11 +13,6 @@ import type { Transaction } from '@/lib/api/types'
 
 export const CONFIG_COLUMNS: ColumnConfig<RecordEntity<Transaction>>[] = [
   {
-    id: 'id',
-    header: 'Transaction ID',
-    enableSorting: true,
-  },
-  {
     id: 'title',
     header: 'Title',
     enableSorting: true,
@@ -28,11 +23,26 @@ export const CONFIG_COLUMNS: ColumnConfig<RecordEntity<Transaction>>[] = [
     enableSorting: true,
   },
   {
+    id: 'type',
+    header: 'Type',
+    enableSorting: true,
+  },
+  {
+    id: 'category',
+    header: 'Category',
+    enableSorting: true,
+  },
+  {
     id: 'date',
     header: 'Date',
     enableSorting: true,
     meta: {
       isDate: true,
     },
+  },
+  {
+    id: 'description',
+    header: 'Description',
+    enableSorting: true,
   },
 ]
