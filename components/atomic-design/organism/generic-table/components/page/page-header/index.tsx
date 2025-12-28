@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
 
 // Import of components custom
-import { Title } from '@/components/atomic-design/atoms'
+import { Title, Text } from '@/components/atomic-design/atoms'
 import { NewButton } from '@/components/atomic-design/organism/generic-table/components/new-button'
 
 import type { NewButtonProps } from '@/components/atomic-design/organism/generic-table/utils/types'
@@ -36,10 +36,11 @@ export const PageHeaderComponent = ({
       <div className="flex items-center justify-between">
         {/* Global filter */}
         <div className="flex items-center gap-2">
+          <Text variant="small">Search in global table</Text>
           <div className="relative">
             <Search className="text-muted-foreground absolute top-1/2 left-2 h-4 w-4 -translate-y-1/2" />
             <Input
-              placeholder="Buscar"
+              placeholder="Search..."
               value={globalFilter ?? ''}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 setGlobalFilter(event.target.value)

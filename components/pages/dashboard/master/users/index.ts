@@ -4,4 +4,4 @@
  * @module components/pages/master/users/index
  */
 
-export * from './table/config-columns'
+export * from './table'

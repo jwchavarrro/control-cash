@@ -9,17 +9,22 @@
 // Import of components custom
 import { Header } from '@/components/atomic-design/molecules'
 import { GenericTable } from '@/components/atomic-design/organism/generic-table'
-import type { RecordEntity } from '@/components/atomic-design/organism/generic-table/utils/types'
+
 
 // Import of utilities
 import { KEYWORDS, ROUTES_PAGES } from '@/config'
-import { CONFIG_COLUMNS } from '@/components/pages/dashboard/master/users'
+import {
+  CONFIG_COLUMNS,
+  CONFIG_ACTIONS,
+} from '@/components/pages/dashboard/master/users/table'
 
 // Import of custom service
 import { getAllUsers } from '@/lib/api/services/users'
 
 // Import of types
+import type { RecordEntity } from '@/components/atomic-design/organism/generic-table/utils/types'
 import type { User } from '@/lib/api/types'
+
 
 export default function UsersPage() {
   return (
@@ -38,6 +43,11 @@ export default function UsersPage() {
         newButton={{
           text: `${KEYWORDS.COMMON.NEW} ${KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.USERS}`,
           path: ROUTES_PAGES.MASTER.USERS.CREATE,
+        }}
+        actionsColumn={{
+          actions: CONFIG_ACTIONS(),
+          header: 'Actions',
+          position: 'start',
         }}
       />
     </div>
