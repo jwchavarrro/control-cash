@@ -20,4 +20,3 @@ export interface NavItem {
   isActive?: boolean
   items?: NavItem[]
 }
-
