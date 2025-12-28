@@ -1,9 +1,15 @@
+/**
+ * @file table-header.tsx
+ * @description Componente de la cabecera de la tabla del componente GenericTable
+ * @module components/atomic-design/organism/generic-table/components/table-header
+ */
+
 import { flexRender, type Table } from '@tanstack/react-table';
 import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/atomic-design/atoms/shadcn/table';
+} from '@/components/ui/table';
 import { ChevronDown, ChevronUp, Minus } from 'lucide-react';
 
 interface TableHeaderProps<TData extends Record<string, unknown>> {
@@ -13,7 +19,6 @@ interface TableHeaderProps<TData extends Record<string, unknown>> {
 export const TableHeaderComponent = <TData extends Record<string, unknown>>({
   table,
 }: TableHeaderProps<TData>) => {
-  // Helper function to render the sort indicator
   const renderSortIndicator = (sortDirection: false | 'asc' | 'desc') => {
     if (sortDirection === 'asc') {
       return <ChevronUp className='h-4 w-4 text-gray-500' />;
@@ -22,8 +27,6 @@ export const TableHeaderComponent = <TData extends Record<string, unknown>>({
     if (sortDirection === 'desc') {
       return <ChevronDown className='h-4 w-4 text-gray-500' />;
     }
-
-    // Show a dash when not sorted to maintain alignment
     return <Minus className='h-4 w-4 text-gray-300' />;
   };
 
