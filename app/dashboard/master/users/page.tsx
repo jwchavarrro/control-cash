@@ -10,7 +10,6 @@
 import { Header } from '@/components/atomic-design/molecules'
 import { GenericTable } from '@/components/atomic-design/organism/generic-table'
 
-
 // Import of utilities
 import { KEYWORDS, ROUTES_PAGES } from '@/config'
 import {
@@ -24,7 +23,6 @@ import { getAllUsers } from '@/lib/api/services/users'
 // Import of types
 import type { RecordEntity } from '@/components/atomic-design/organism/generic-table/utils/types'
 import type { User } from '@/lib/api/types'
-
 
 export default function UsersPage() {
   return (

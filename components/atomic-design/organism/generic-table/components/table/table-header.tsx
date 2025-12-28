@@ -30,7 +30,7 @@ export const TableHeaderComponent = <TData extends Record<string, unknown>>({
               <TableHead
                 key={header.id}
                 colSpan={header.colSpan}
-                className="p-2 text-center bg-primary text-primary-foreground"
+                className="bg-primary text-primary-foreground p-2 text-center"
               >
                 {header.isPlaceholder ? null : (
                   <div
@@ -50,9 +50,7 @@ export const TableHeaderComponent = <TData extends Record<string, unknown>>({
                         header.getContext()
                       )}
                     </Text>
-                    {canSort && (
-                        <SortIndicator sortDirection={sortDirection} />
-                    )}
+                    {canSort && <SortIndicator sortDirection={sortDirection} />}
                   </div>
                 )}
               </TableHead>

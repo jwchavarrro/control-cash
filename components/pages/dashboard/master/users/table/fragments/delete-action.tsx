@@ -7,17 +7,16 @@
 import { Trash } from 'lucide-react'
 
 // Import of componts custom
-import { ButtonAction } from '@/components/common/generic-table';
+import { ButtonAction } from '@/components/common/generic-table'
 
 // Import of types
-import type { User } from '@/lib/api/types';
+import type { User } from '@/lib/api/types'
 
 export const DeleteAction = ({ row }: { row: User }) => {
-
   // Handle
   const handleOnClickDelete = () => {
-    console.log(row);
-  };
+    console.log(row)
+  }
 
-  return <ButtonAction tooltipMessage='Delete' icon={Trash} />
-};
+  return <ButtonAction tooltipMessage="Delete" icon={Trash} />
+}
