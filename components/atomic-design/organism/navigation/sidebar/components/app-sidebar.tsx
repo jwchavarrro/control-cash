@@ -7,132 +7,40 @@
 
 'use client'
 
-import * as React from 'react'
-import { BookOpen, Bot, Settings2, SquareTerminal } from 'lucide-react'
-
 import {
   Sidebar,
+  SidebarHeader,
   SidebarContent,
   SidebarFooter,
-  SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar'
 
 // Import of components custom
 import {
+  Header,
   NavMain,
   NavUser,
 } from '@/components/atomic-design/organism/navigation/sidebar/fragments'
 
-// This is sample data.
-const data = {
-  user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
-  },
-  navMain: [
-    {
-      title: 'Playground',
-      url: '#',
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: 'History',
-          url: '#',
-        },
-        {
-          title: 'Starred',
-          url: '#',
-        },
-        {
-          title: 'Settings',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Models',
-      url: '#',
-      icon: Bot,
-      items: [
-        {
-          title: 'Genesis',
-          url: '#',
-        },
-        {
-          title: 'Explorer',
-          url: '#',
-        },
-        {
-          title: 'Quantum',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Documentation',
-      url: '#',
-      icon: BookOpen,
-      items: [
-        {
-          title: 'Introduction',
-          url: '#',
-        },
-        {
-          title: 'Get Started',
-          url: '#',
-        },
-        {
-          title: 'Tutorials',
-          url: '#',
-        },
-        {
-          title: 'Changelog',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Settings',
-      url: '#',
-      icon: Settings2,
-      items: [
-        {
-          title: 'General',
-          url: '#',
-        },
-        {
-          title: 'Team',
-          url: '#',
-        },
-        {
-          title: 'Billing',
-          url: '#',
-        },
-        {
-          title: 'Limits',
-          url: '#',
-        },
-      ],
-    },
-  ],
+// Import of utilities
+import { SidebarItem, SidebarUser } from '../utils'
+
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  items: SidebarItem[]
+  user: SidebarUser
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {}
-
-export function AppSidebar({ ...props }: Readonly<AppSidebarProps>) {
+export function AppSidebar({ items, user }: Readonly<AppSidebarProps>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader></SidebarHeader>
+    <Sidebar collapsible="icon">
+      <SidebarHeader>
+        <Header />
+      </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={items} />
       </SidebarContent>
       <SidebarFooter>
-        {' '}
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
