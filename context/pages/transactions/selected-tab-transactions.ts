@@ -5,14 +5,11 @@
  */
 import { context, useContext } from '@/context'
 
-// Import of constants
-import { TAB_TRANSACTIONS_OPTIONS } from '@/components/pages/dashboard/transactions/utils'
-
 // Import of types
 import { ENUM_TRANSACTION_TYPE } from '@/lib/api'
 
 const selectedTabTransactionsContext = context<ENUM_TRANSACTION_TYPE>(
-  TAB_TRANSACTIONS_OPTIONS.INCOME
+  ENUM_TRANSACTION_TYPE.INCOME
 )
 
 export const useSelectedTabTransactions = () => {

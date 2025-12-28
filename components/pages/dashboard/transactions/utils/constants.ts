@@ -10,7 +10,7 @@ import { ENUM_TRANSACTION_TYPE } from '@/lib/api'
  * @constant TAB_TRANSACTIONS_OPTIONS
  * @description Opciones de tab para la página de transacciones
  */
-export const TAB_TRANSACTIONS_OPTIONS = {
-  INCOME: ENUM_TRANSACTION_TYPE.INCOME,
-  EXPENSE: ENUM_TRANSACTION_TYPE.EXPENSE,
-} as const
+export const TAB_TRANSACTIONS_OPTIONS: ENUM_TRANSACTION_TYPE[] = [
+  ENUM_TRANSACTION_TYPE.INCOME,
+  ENUM_TRANSACTION_TYPE.EXPENSE,
+]
