@@ -21,7 +21,7 @@ export function useLogin() {
     mutationFn: authService.login,
     onSuccess: data => {
       // Guardar sesión usando función consolidada
-      saveSession(data.token, data.user.id)
+      saveSession(data.token, data.user.id, data.user.email, data.user.name)
       toast.success('Login successful!')
     },
     onError: error => {

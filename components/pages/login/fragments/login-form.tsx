@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 
-import { Field,FieldLabel, FieldContent } from '@/components/ui/field'
+import { Field, FieldLabel, FieldContent } from '@/components/ui/field'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
@@ -25,7 +25,6 @@ import { useLogin } from '@/lib/api/hooks/users/use-login'
 
 // Import of schemas
 import { loginSchema, type LoginFormData } from '@/lib/auth/schemas'
-
 
 export function LoginForm() {
   // Hooks
@@ -62,72 +61,71 @@ export function LoginForm() {
       }}
       onSubmit={handleSubmit(onSubmit)}
     >
+      {/* Email */}
+      <Field data-invalid={errors.email ? 'true' : undefined}>
+        <FieldLabel asChild htmlFor="email">
+          <Text>Email</Text>
+        </FieldLabel>
+        <FieldContent>
+          <Input
+            id="email"
+            type="email"
+            placeholder="ctrlcash@example.com"
+            {...register('email')}
+            aria-invalid={errors.email ? 'true' : 'false'}
+          />
+          <FormFieldError message={errors.email?.message} />
+        </FieldContent>
+      </Field>
 
-        {/* Email */}
-        <Field data-invalid={errors.email ? 'true' : undefined}>
-          <FieldLabel asChild htmlFor="email">
-            <Text>Email</Text>
+      {/* Password */}
+      <Field data-invalid={errors.password ? 'true' : undefined}>
+        <div className="flex items-center">
+          <FieldLabel asChild htmlFor="password">
+            <Text>Password</Text>
           </FieldLabel>
-          <FieldContent>
-            <Input
-              id="email"
-              type="email"
-              placeholder="ctrlcash@example.com"
-              {...register('email')}
-              aria-invalid={errors.email ? 'true' : 'false'}
-            />
-            <FormFieldError message={errors.email?.message} />
-          </FieldContent>
-        </Field>
-
-        {/* Password */}
-        <Field data-invalid={errors.password ? 'true' : undefined}>
-          <div className="flex items-center">
-            <FieldLabel asChild htmlFor="password">
-              <Text>Password</Text>
-            </FieldLabel>
-            <Link
-              href="/forgot"
-              className="hover:underline-primary ml-auto underline-offset-4 hover:underline"
-            >
-              <Text color="primary" variant="small">
-                Forgot your password?
-              </Text>
-            </Link>
-          </div>
-          <FieldContent>
-            <Input
-              id="password"
-              type="password"
-              placeholder="●●●●●●●●"
-              {...register('password')}
-              aria-invalid={errors.password ? 'true' : 'false'}
-            />
-            <FormFieldError message={errors.password?.message} />
-          </FieldContent>
-        </Field>
-
-        {/* Login Button */}
-        <Field>
-          <Button type="submit" disabled={isPending}>
-            {isPending ? 'Logging in...' : 'Login'}
-          </Button>
-        </Field>
-
-        {/* Sign up Link */}
-        <Field>
-          <FieldLabel asChild>
-            <Text>
-              Don&apos;t have an account?{' '}
-              <Link
-                href="/register"
-                className="hover:underline-primary underline-offset-4 hover:underline"
-              >
-                Sign up
-              </Link>
+          <Link
+            href="/forgot"
+            className="hover:underline-primary ml-auto underline-offset-4 hover:underline"
+          >
+            <Text color="primary" variant="small">
+              Forgot your password?
             </Text>
-          </FieldLabel>
-        </Field>
-      </AuthFormLayout>
-    )
+          </Link>
+        </div>
+        <FieldContent>
+          <Input
+            id="password"
+            type="password"
+            placeholder="●●●●●●●●"
+            {...register('password')}
+            aria-invalid={errors.password ? 'true' : 'false'}
+          />
+          <FormFieldError message={errors.password?.message} />
+        </FieldContent>
+      </Field>
+
+      {/* Login Button */}
+      <Field>
+        <Button type="submit" disabled={isPending}>
+          {isPending ? 'Logging in...' : 'Login'}
+        </Button>
+      </Field>
+
+      {/* Sign up Link */}
+      <Field>
+        <FieldLabel asChild>
+          <Text>
+            Don&apos;t have an account?{' '}
+            <Link
+              href="/register"
+              className="hover:underline-primary underline-offset-4 hover:underline"
+            >
+              Sign up
+            </Link>
+          </Text>
+        </FieldLabel>
+      </Field>
+    </AuthFormLayout>
+  )
 }

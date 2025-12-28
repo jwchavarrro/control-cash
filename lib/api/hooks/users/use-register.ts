@@ -24,7 +24,7 @@ export function useRegister() {
     mutationFn: authService.register,
     onSuccess: data => {
       // Guardar sesión usando función consolidada
-      saveSession(data.token, data.user.id)
+      saveSession(data.token, data.user.id, data.user.email, data.user.name)
       toast.success('Account created successfully!')
     },
     onError: error => {
