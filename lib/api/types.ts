@@ -45,15 +45,7 @@ export interface TransactionFilters {
   userId?: string
 }
 
-export type SortField = 'date' | 'amount' | 'title'
-export type SortOrder = 'asc' | 'desc'
-
-export interface SortOptions {
-  field: SortField
-  order: SortOrder
-}
-
-// Tipos para Login (ReqRes)
+// Tipos para Autenticación (MockAPI)
 export interface LoginRequest {
   email: string
   password: string
@@ -61,9 +53,28 @@ export interface LoginRequest {
 
 export interface LoginResponse {
   token: string
+  user: UserPublic
+}
+
+export interface RegisterRequest {
+  email: string
+  password: string
+  name?: string
 }
 
 export interface User {
+  id: string
+  email: string
+  password: string
+  name?: string
+  createdAt?: string
+}
+
+/**
+ * Usuario sin información sensible (sin password)
+ * Usado para respuestas de API
+ */
+export interface UserPublic {
   id: string
   email: string
   name?: string

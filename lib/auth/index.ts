@@ -36,25 +36,56 @@ export function getUserId(): string | null {
 }
 
 /**
+ * Obtener el email del usuario
+ * @returns Email si existe, null en caso contrario
+ */
+export function getUserEmail(): string | null {
+  if (globalThis.window === undefined) return null
+  return globalThis.localStorage.getItem('userEmail')
+}
+
+/**
+ * Obtener el nombre del usuario
+ * @returns Name si existe, null en caso contrario
+ */
+export function getUserName(): string | null {
+  if (globalThis.window === undefined) return null
+  return globalThis.localStorage.getItem('userName')
+}
+
+/**
  * Cerrar sesión
- * Elimina el token y userId del localStorage
+ * Elimina toda la información de la sesión del localStorage
  */
 export function logout(): void {
   if (globalThis.window === undefined) return
   globalThis.localStorage.removeItem('token')
   globalThis.localStorage.removeItem('userId')
+  globalThis.localStorage.removeItem('userEmail')
+  globalThis.localStorage.removeItem('userName')
 }
 
 /**
  * Guardar sesión después de login exitoso
  *
  * @param token - Token de autenticación
- * @param userId - ID del usuario (opcional)
+ * @param userId - ID del usuario
+ * @param email - Email del usuario (opcional)
+ * @param name - Nombre del usuario (opcional)
  */
-export function saveSession(token: string, userId?: string): void {
+export function saveSession(
+  token: string,
+  userId: string,
+  email?: string,
+  name?: string
+): void {
   if (globalThis.window === undefined) return
   globalThis.localStorage.setItem('token', token)
-  if (userId) {
-    globalThis.localStorage.setItem('userId', userId)
+  globalThis.localStorage.setItem('userId', userId)
+  if (email) {
+    globalThis.localStorage.setItem('userEmail', email)
+  }
+  if (name) {
+    globalThis.localStorage.setItem('userName', name)
   }
 }

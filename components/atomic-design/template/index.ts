@@ -4,4 +4,5 @@
  * @module components/atomic-design/template
  */
 
-export { AuthTemplate } from './auth-form-layout'
+export * from './auth-layout'
+export * from './auth-form-layout'

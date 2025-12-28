@@ -10,12 +10,12 @@ import { KeyRound } from 'lucide-react'
 
 // Import of components custom
 import { ForgotPasswordForm } from '@/components/pages/forgot'
-import { AuthTemplate } from '@/components/atomic-design/template'
+import { AuthLayout } from '@/components/atomic-design/template'
 
 export default function ForgotPasswordPage() {
   return (
-    <AuthTemplate icon={KeyRound}>
+    <AuthLayout icon={KeyRound}>
       <ForgotPasswordForm />
-    </AuthTemplate>
+    </AuthLayout>
   )
 }
