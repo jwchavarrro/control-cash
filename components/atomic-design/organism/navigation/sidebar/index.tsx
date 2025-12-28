@@ -17,7 +17,10 @@ import { Separator } from '@/components/ui/separator'
 import { AppSidebar } from '@/components/atomic-design/organism/navigation/sidebar/components'
 
 // Import of types
-import { SidebarItem, SidebarUser } from '@/components/atomic-design/organism/navigation/sidebar/utils'
+import {
+  SidebarItem,
+  SidebarUser,
+} from '@/components/atomic-design/organism/navigation/sidebar/utils'
 
 interface SidebarProps extends React.ComponentProps<typeof SidebarProvider> {
   items: SidebarItem[]
