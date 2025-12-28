@@ -1,7 +1,6 @@
 /**
- * Hook para login
- * Mutation porque modifica el estado (crea sesión)
- *
+ * @file use-login.ts
+ * @description Hook para iniciar sesión
  * @module lib/api/hooks/users/use-login
  */
 
@@ -9,8 +8,12 @@
 
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'sonner'
+
+// Import of services custom
 import { authService } from '@/lib/api/services'
 import { saveSession } from '@/lib/auth'
+
+// Import of types
 import type { LoginRequest, LoginResponse } from '@/lib/api/types'
 
 export function useLogin() {

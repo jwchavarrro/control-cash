@@ -10,12 +10,12 @@ import { ShieldUser } from 'lucide-react'
 
 // Import of components custom
 import { LoginForm } from '@/components/pages/login/fragments/login-form'
-import { AuthTemplate } from '@/components/atomic-design/template'
+import { AuthLayout } from '@/components/atomic-design/template'
 
 export default function LoginPage() {
   return (
-    <AuthTemplate icon={ShieldUser}>
+    <AuthLayout icon={ShieldUser}>
       <LoginForm />
-    </AuthTemplate>
+    </AuthLayout>
   )
 }

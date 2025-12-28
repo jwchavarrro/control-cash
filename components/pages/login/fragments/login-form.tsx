@@ -1,5 +1,5 @@
 /**
- * @file login-form.tsx
+ * @file fragments/login-form.tsx
  * @description Formulario de login con validaciones
  * @module components/pages/login/fragments/login-form
  */
@@ -10,13 +10,13 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 
-import { Field, FieldGroup, FieldLabel, FieldContent } from '@/components/ui/field'
+import { Field,FieldLabel, FieldContent } from '@/components/ui/field'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
 
 // Import of components custom
-import { Title, Text } from '@/components/atomic-design/atoms'
+import { Text } from '@/components/atomic-design/atoms'
 import { FormFieldError } from '@/components/auth'
 
 // Import of hooks
@@ -26,12 +26,9 @@ import { useLogin } from '@/lib/api/hooks/users/use-login'
 import { loginSchema, type LoginFormData } from '@/lib/auth/schemas'
 
 // Import of utilities
-import { cn } from '@/lib/utils'
+import { AuthFormLayout } from '@/components/atomic-design/template'
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<'form'>) {
+export function LoginForm() {
   // Hooks
   const router = useRouter()
 
@@ -59,18 +56,13 @@ export function LoginForm({
   }
 
   return (
-    <form
-      className={cn('flex flex-col gap-6', className)}
+    <AuthFormLayout
+      header={{
+        title: 'Login to your account',
+        description: 'Enter your email below to login to your account',
+      }}
       onSubmit={handleSubmit(onSubmit)}
-      {...props}
     >
-      <FieldGroup>
-        <header className="flex flex-col items-center gap-1 text-center">
-          <Title level={1} color="primary" className="text-2xl font-bold">
-            Login to your account
-          </Title>
-          <Text>Enter your email below to login to your account</Text>
-        </header>
 
         {/* Email */}
         <Field data-invalid={errors.email ? 'true' : undefined}>
@@ -137,7 +129,6 @@ export function LoginForm({
             </Text>
           </FieldLabel>
         </Field>
-      </FieldGroup>
-    </form>
-  )
+      </AuthFormLayout>
+    )
 }

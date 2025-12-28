@@ -1,8 +1,8 @@
 /**
- * Exportaciones de componentes de autenticación
- *
+ * @file index.ts
+ * @description Index de componentes de autenticación
  * @module components/auth
  */
 
-export { AuthCheck } from './auth-check'
-export { FormFieldError } from './form-field-error'
+export * from './auth-check'
+export * from './form-field-error'
