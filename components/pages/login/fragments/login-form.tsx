@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 
-import { Field, FieldGroup, FieldLabel, FieldError, FieldContent } from '@/components/ui/field'
+import { Field, FieldGroup, FieldLabel, FieldContent } from '@/components/ui/field'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
@@ -36,7 +36,7 @@ export function LoginForm({
   const router = useRouter()
 
   // Implementation of custom hook
-  const { mutate: login, isPending, isError, error } = useLogin()
+  const { mutate: login, isPending } = useLogin()
 
   const {
     register,
@@ -71,15 +71,6 @@ export function LoginForm({
           </Title>
           <Text>Enter your email below to login to your account</Text>
         </header>
-
-        {/* Error general del servidor */}
-        {isError && (
-          <Field>
-            <FieldError>
-              {error?.message || 'Error logging in. Please try again.'}
-            </FieldError>
-          </Field>
-        )}
 
         {/* Email */}
         <Field data-invalid={errors.email ? 'true' : undefined}>
