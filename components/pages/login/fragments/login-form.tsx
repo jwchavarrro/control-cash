@@ -16,6 +16,7 @@ import { Input } from '@/components/ui/input'
 import Link from 'next/link'
 
 // Import of components custom
+import { AuthFormLayout } from '@/components/atomic-design/template'
 import { Text } from '@/components/atomic-design/atoms'
 import { FormFieldError } from '@/components/auth'
 
@@ -25,8 +26,6 @@ import { useLogin } from '@/lib/api/hooks/users/use-login'
 // Import of schemas
 import { loginSchema, type LoginFormData } from '@/lib/auth/schemas'
 
-// Import of utilities
-import { AuthFormLayout } from '@/components/atomic-design/template'
 
 export function LoginForm() {
   // Hooks
