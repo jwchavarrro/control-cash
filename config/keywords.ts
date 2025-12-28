@@ -13,7 +13,9 @@ export const KEYWORDS = {
   COMPONENTS: {
     NAVIGATION: {
       SIDEBAR: {
-        DASHBOARD: 'Dashboard',
+        DASHBOARD: {
+          TITLE: 'Dashboard',
+        },
         MASTER: {
           TITLE: 'Master',
           PRODUCTS: 'Products',

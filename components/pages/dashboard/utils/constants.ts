@@ -4,7 +4,7 @@
  * @module components/pages/dashboard/utils/constants
  */
 
-import { SquareTerminal } from 'lucide-react'
+import { ArrowRightLeft,LayoutDashboard, Birdhouse } from 'lucide-react'
 
 // Import of utilities
 import { KEYWORDS, ROUTES_PAGES } from '@/config'
@@ -16,9 +16,14 @@ import { KEYWORDS, ROUTES_PAGES } from '@/config'
 export const NAVIGATION_NAV_MAIN = {
   NAV_MAIN: [
     {
-      title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.TITLE,
+      title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.DASHBOARD.TITLE,
       url: ROUTES_PAGES.DASHBOARD,
-      icon: SquareTerminal,
+      icon: Birdhouse,
+    },
+    {
+      title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.MASTER.TITLE,
+      url: ROUTES_PAGES.MASTER.MASTER,
+      icon: LayoutDashboard,
       isActive: true,
       items: [
         {
@@ -34,8 +39,7 @@ export const NAVIGATION_NAV_MAIN = {
     {
       title: KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.TRANSACTIONS.TITLE,
       url: ROUTES_PAGES.TRANSACTIONS.LIST,
-      icon: SquareTerminal,
-      isActive: true,
+      icon: ArrowRightLeft,
     },
   ],
 }
