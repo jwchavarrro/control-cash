@@ -4,8 +4,10 @@
  * @module components/atomic-design/organism/generic-table/components/table/table-body
  */
 
-// Import of components custom
 import { TableBody, TableCell, TableRow } from '@/components/ui/table'
+
+// Import of components custom
+import { Text } from '@/components/atomic-design/atoms'
 
 // Import of types
 import { flexRender, type Table } from '@tanstack/react-table'
@@ -39,7 +41,7 @@ export const TableBodyComponent = <TData extends Record<string, unknown>>({
             colSpan={table.getAllColumns().length}
             className="h-24 text-center"
           >
-            No results.
+            <Text variant="small">No results.</Text>
           </TableCell>
         </TableRow>
       )}

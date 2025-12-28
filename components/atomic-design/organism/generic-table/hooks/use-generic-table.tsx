@@ -149,6 +149,7 @@ export const useGenericTable = <TData extends Record<string, unknown>>({
     return mappedColumns
   }, [columnConfig, actionsColumn])
 
+  // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable<TData>({
     data,
     columns,
