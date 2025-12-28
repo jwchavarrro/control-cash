@@ -5,13 +5,14 @@
  */
 
 import { Input } from '@/components/ui/input'
-import { Search } from 'lucide-react'
+import { Info, Search } from 'lucide-react'
 
 // Import of components custom
-import { Title, Text } from '@/components/atomic-design/atoms'
+import { Title } from '@/components/atomic-design/atoms'
 import { NewButton } from '@/components/atomic-design/organism/generic-table/components/new-button'
 
 import type { NewButtonProps } from '@/components/atomic-design/organism/generic-table/utils/types'
+import { ButtonAction } from '@/components/common/generic-table'
 
 interface PageHeaderProps {
   title?: string
@@ -33,11 +34,10 @@ export const PageHeaderComponent = ({
           {title}
         </Title>
       )}
-      <div className="flex items-center justify-between">
+      <div className="flex items-end justify-between gap-5">
         {/* Global filter */}
         <div className="flex items-center gap-2">
-          <Text variant="small">Search in global table</Text>
-          <div className="relative">
+          <div className="relative w-full md:w-80">
             <Search className="text-muted-foreground absolute top-1/2 left-2 h-4 w-4 -translate-y-1/2" />
             <Input
               placeholder="Search..."
@@ -45,9 +45,13 @@ export const PageHeaderComponent = ({
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 setGlobalFilter(event.target.value)
               }
-              className="pl-8"
+              className="h-10 pl-8"
             />
           </div>
+          <ButtonAction
+            tooltipMessage="Search across all table data"
+            icon={Info}
+          />
         </div>
 
         {/* New button */}
