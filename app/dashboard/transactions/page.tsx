@@ -41,7 +41,7 @@ export default function TransactionsPage() {
   const { selectedTransaction } = useSelectedTransaction()
 
   // Implement of custom hooks
-  const { mutate: deleteTransaction } = useDeleteTransaction()
+  const { mutate: deleteTransaction, isPending: isDeleting } = useDeleteTransaction()
 
   /**
    * @description Contenido de los tabs
@@ -57,9 +57,16 @@ export default function TransactionsPage() {
 
   // Handles
   const handleOnConfirm = (id: string) => {
-    deleteTransaction(id)
-    setOpen(false)
-    setAction(ENUM_ACTION_TYPE.IDLE)
+    if (!id) {
+      return
+    }
+
+    deleteTransaction(id, {
+      onSuccess: () => {
+        setOpen(false)
+        setAction(ENUM_ACTION_TYPE.IDLE)
+      },
+    })
   }
 
   return (
@@ -74,6 +81,7 @@ export default function TransactionsPage() {
           setAction(ENUM_ACTION_TYPE.IDLE)
         }}
         onConfirm={() => handleOnConfirm(selectedTransaction?.id || '')}
+        disabled={isDeleting}
       />
       <div className="container mx-auto flex flex-col gap-4">
         <Header

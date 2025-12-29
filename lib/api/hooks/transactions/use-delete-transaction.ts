@@ -1,5 +1,6 @@
 /**
- * Hook para eliminar una transacción
+ * @file use-delete-transaction.ts
+ * @description Hook para eliminar una transacción
  * Mutation porque modifica datos
  *
  * @module lib/api/hooks/transactions/use-delete-transaction
@@ -8,33 +9,38 @@
 'use client'
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'sonner'
+
+// Import of custom hooks
 import { transactionService } from '@/lib/api/services'
 import { queryKeys } from '@/lib/api/hooks/query-keys'
 
-/**
- * Hook para eliminar una transacción
- * Invalida automáticamente las queries relacionadas al tener éxito
- *
- * @returns Mutation para eliminar transacción
- */
 export function useDeleteTransaction() {
   const queryClient = useQueryClient()
 
   return useMutation<void, Error, string>({
     mutationFn: transactionService.delete,
     onSuccess: () => {
-      // Invalidar queries de transacciones
+      // Invalidar todas las queries de transacciones (incluye listas con filtros)
       queryClient.invalidateQueries({
-        queryKey: queryKeys.transactions.lists(),
+        queryKey: queryKeys.transactions.all,
       })
       // Invalidar resumen del dashboard
       const userId =
-        (globalThis.window !== undefined
-          ? globalThis.localStorage.getItem('userId')
-          : null) || '1'
+        globalThis.window === undefined
+          ? '1'
+          : globalThis.localStorage.getItem('userId') || '1'
       queryClient.invalidateQueries({
         queryKey: queryKeys.dashboard.summary(userId),
       })
+      // Refetch 
+      queryClient.refetchQueries({
+        queryKey: queryKeys.transactions.all,
+      })
+      toast.success('Transaction deleted successfully')
+    },
+    onError: (error) => {
+      toast.error(error?.message || 'Failed to delete transaction')
     },
   })
 }
