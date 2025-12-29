@@ -4,6 +4,8 @@
  * @module components/atomic-design/organism/generic-table/generic-table
  */
 
+'use client'
+
 // Import of components custom
 import {
   PageHeaderComponent,

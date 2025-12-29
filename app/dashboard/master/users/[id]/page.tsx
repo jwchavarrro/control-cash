@@ -14,7 +14,7 @@ export default function CreateEditUserPage() {
   return (
     <div className="container mx-auto flex flex-col gap-4">
       <Header
-        title='Create/Edit User'
+        title="Create/Edit User"
         text="Create or edit a user in the system. This feature is currently under development. Please check back soon."
       />
       <Message

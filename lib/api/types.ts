@@ -7,14 +7,40 @@
 /**
  * Transacciones
  */
-export type TransactionType = 'income' | 'expense'
+export enum ENUM_TRANSACTION_TYPE {
+  INCOME = 'income',
+  EXPENSE = 'expense',
+}
+
+export enum ENUM_TRANSACTION_CATEGORY {
+  // Income categories
+  SALARY = 'Salary',
+  FREELANCE = 'Freelance',
+  INVESTMENT = 'Investment',
+  BONUS = 'Bonus',
+  RENTAL = 'Rental',
+  DIVIDENDS = 'Dividends',
+  // Expense categories
+  FOOD = 'Food',
+  SHOPPING = 'Shopping',
+  FURNITURE = 'Furniture',
+  ELECTRONICS = 'Electronics',
+  CLOTHING = 'Clothing',
+  TRANSPORT = 'Transport',
+  UTILITIES = 'Utilities',
+  HEALTH = 'Health',
+  ENTERTAINMENT = 'Entertainment',
+  EDUCATION = 'Education',
+  TRAVEL = 'Travel',
+  OTHER = 'Other',
+}
 
 export interface Transaction {
   id: string
   title: string
   amount: number
-  type: TransactionType
-  category: string
+  type: ENUM_TRANSACTION_TYPE
+  category: ENUM_TRANSACTION_CATEGORY
   date: string
   description?: string
   receipt_url?: string
@@ -25,8 +51,8 @@ export interface Transaction {
 export interface TransactionInput {
   title: string
   amount: number
-  type: TransactionType
-  category: string
+  type: ENUM_TRANSACTION_TYPE
+  category: ENUM_TRANSACTION_CATEGORY
   date: string
   description?: string
   receipt_url?: string
@@ -40,8 +66,8 @@ export interface DashboardSummary {
 }
 
 export interface TransactionFilters {
-  type?: TransactionType
-  category?: string
+  type?: ENUM_TRANSACTION_TYPE
+  category?: ENUM_TRANSACTION_CATEGORY
   userId?: string
 }
 

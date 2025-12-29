@@ -10,6 +10,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { transactionService } from '@/lib/api/services'
 import { queryKeys } from '@/lib/api/hooks/query-keys'
+import { ENUM_TRANSACTION_TYPE } from '@/lib/api/types'
 import type { DashboardSummary } from '@/lib/api/types'
 
 /**
@@ -29,12 +30,12 @@ export function useDashboardSummary(userId: string) {
       // Calcular resumen
       const totalIncome =
         transactions
-          .filter(t => t.type === 'income')
+          .filter(t => t.type === ENUM_TRANSACTION_TYPE.INCOME)
           .reduce((sum, t) => sum + t.amount, 0) || 0
 
       const totalExpenses =
         transactions
-          .filter(t => t.type === 'expense')
+          .filter(t => t.type === ENUM_TRANSACTION_TYPE.EXPENSE)
           .reduce((sum, t) => sum + t.amount, 0) || 0
 
       const netBalance = totalIncome - totalExpenses
