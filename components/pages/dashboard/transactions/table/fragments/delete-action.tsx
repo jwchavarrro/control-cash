@@ -10,7 +10,7 @@ import { Trash } from 'lucide-react'
 import { ButtonAction } from '@/components/common/generic-table'
 
 // Import of context
-import { useSelectedTransactions } from '@/context/pages/transactions/selected-transactions'
+import { useSelectedTransaction } from '@/context/pages/transactions/selected-transaction'
 import { useOpenActionDialog } from '@/context/pages/use-open-action-dialog'
 
 // Import of types
@@ -19,12 +19,12 @@ import { ENUM_ACTION_TYPE } from '@/app/utils'
 
 export const DeleteAction = ({ row }: { row: Transaction }) => {
   // Import of context
-  const { setSelectedTransactions } = useSelectedTransactions()
+  const { setSelectedTransaction } = useSelectedTransaction()
   const { setAction,setOpen } = useOpenActionDialog()
 
   // Handle
   const handleOnClickDelete = () => {
-    setSelectedTransactions(row)
+    setSelectedTransaction(row)
     setAction(ENUM_ACTION_TYPE.DELETE)
     setOpen(true)
   }
