@@ -4,6 +4,8 @@
  * @module components/atomic-design/organism/generic-table/hooks/use-generic-table
  */
 
+'use client'
+
 import { useMemo, useState } from 'react'
 import {
   useReactTable,

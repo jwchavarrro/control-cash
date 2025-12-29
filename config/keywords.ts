@@ -29,5 +29,7 @@ export const KEYWORDS = {
   },
   COMMON: {
     NEW: 'New',
+    CANCEL: 'Cancel',
+    CONFIRM: 'Confirm',
   },
 }

@@ -1,7 +1,7 @@
 /**
- * @file navigation.ts
- * @description Tipos relacionados con la navegación
- * @module types/navigation
+ * @file types.ts
+ * @description Tipos para el componente Breadcrumb
+ * @module components/atomic-design/organism/navigation/breadcrumb/utils/types
  */
 
 export interface BreadcrumbItem {
@@ -20,4 +20,3 @@ export interface NavItem {
   isActive?: boolean
   items?: NavItem[]
 }
-

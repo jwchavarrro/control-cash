@@ -6,21 +6,24 @@
 
 'use client'
 
-import {
-  Breadcrumb,
-  BreadcrumbList,
-} from '@/components/ui/breadcrumb';
+import { Breadcrumb, BreadcrumbList } from '@/components/ui/breadcrumb'
 
 // Import of hooks
-import { useBreadcrumbs, useBreadcrumbProcessing } from '@/components/atomic-design/organism/navigation/breadcrumb/hooks';
+import {
+  useBreadcrumbs,
+  useBreadcrumbProcessing,
+} from '@/components/atomic-design/organism/navigation/breadcrumb/hooks'
 
 // Import of fragments
-import { BreadcrumbItemRenderer, BreadcrumbEllipsisMenu } from '@/components/atomic-design/organism/navigation/breadcrumb/fragments';
+import {
+  BreadcrumbItemRenderer,
+  BreadcrumbEllipsisMenu,
+} from '@/components/atomic-design/organism/navigation/breadcrumb/fragments'
 
 interface BreadcrumbsProps {
-  showEllipsisMenu?: boolean;
-  maxVisibleItems?: number;
-  disabledLabels?: string[];
+  showEllipsisMenu?: boolean
+  maxVisibleItems?: number
+  disabledLabels?: string[]
 }
 
 export const Breadcrumbs = ({
@@ -28,7 +31,7 @@ export const Breadcrumbs = ({
   maxVisibleItems = 4,
   disabledLabels = [],
 }: BreadcrumbsProps) => {
-  const breadcrumbItems = useBreadcrumbs();
+  const breadcrumbItems = useBreadcrumbs()
 
   const { visibleItems, ellipsisItems, shouldShowEllipsis } =
     useBreadcrumbProcessing({
@@ -36,13 +39,13 @@ export const Breadcrumbs = ({
       disabledLabels,
       showEllipsisMenu,
       maxVisibleItems,
-    });
+    })
 
-  if (!breadcrumbItems || breadcrumbItems.length === 0) return null;
+  if (!breadcrumbItems || breadcrumbItems.length === 0) return null
 
   return (
     <Breadcrumb>
-      <BreadcrumbList className='flex items-center gap-1'>
+      <BreadcrumbList className="flex items-center gap-1">
         {visibleItems.map((item, index) => (
           <BreadcrumbItemRenderer
             key={item.id}
@@ -56,5 +59,5 @@ export const Breadcrumbs = ({
         )}
       </BreadcrumbList>
     </Breadcrumb>
-  );
-};
+  )
+}
