@@ -1,11 +1,15 @@
+/**
+ * @file dialog-header.tsx
+ * @description Componente de header de diálogo
+ * @module components/atomic-design/molecules/dialog/dialog-header
+ */
+
 import {
   DialogHeader as ShadcnDialogHeader,
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
 
-// Import of components custom
-import { Title, Text } from '@/components/atomic-design/atoms';
 
 export interface DialogHeaderProps {
   title?: string;
@@ -18,16 +22,12 @@ export const DialogHeader = ({ title, description }: DialogHeaderProps) => {
 
   return (
     <ShadcnDialogHeader>
-      {title && (
-        <DialogTitle>
-          <Title level={3} color='primary' >{title}</Title>
-        </DialogTitle>
-      )}
+      {title && <DialogTitle>{title}</DialogTitle>}
       {description && (
-        <DialogDescription id='dialog-description'>
-          <Text variant='small' color='default' >{description}</Text>
+        <DialogDescription id="dialog-description">
+          {description}
         </DialogDescription>
       )}
     </ShadcnDialogHeader>
-  );
+  )
 };

@@ -29,5 +29,11 @@ export const DeleteAction = ({ row }: { row: Transaction }) => {
     setOpen(true)
   }
 
-  return <ButtonAction tooltipMessage="Delete" icon={Trash} />
+  return (
+    <ButtonAction
+      tooltipMessage="Delete"
+      icon={Trash}
+      onClick={handleOnClickDelete}
+    />
+  )
 }

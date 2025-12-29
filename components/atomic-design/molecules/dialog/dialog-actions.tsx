@@ -1,3 +1,8 @@
+/**
+ * @file dialog-actions.tsx
+ * @description Componente de acciones de diálogo
+ * @module components/atomic-design/molecules/dialog/dialog-actions
+ */
 
 import {
   Button,
@@ -31,7 +36,7 @@ export const DialogActions = ({
 }: DialogActionsProps) => {
   return (
     <div
-      className={cn('flex items-center justify-center gap-5', extraClassName)}
+      className={cn('flex items-center justify-center gap-2', extraClassName)}
     >
       {showCancel && (
         <Button variant='outline' onClick={onCancel} >{cancelText}</Button>
