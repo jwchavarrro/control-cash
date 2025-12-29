@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/button'
 import type { ComponentProps } from 'react'
 import type { LucideIcon } from 'lucide-react'
 
-interface ButtonActionProps {
+interface ButtonActionProps extends ComponentProps<typeof Button> {
   tooltipMessage: string
   icon: LucideIcon
   iconProps?: ComponentProps<LucideIcon>

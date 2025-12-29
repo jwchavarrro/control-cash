@@ -48,7 +48,7 @@ export const Tabs = memo(
               key={item}
               value={itemString}
               className={cn(
-                'w-full px-5 cursor-pointer capitalize',
+                'w-full cursor-pointer px-5 capitalize',
                 extraClassNameTab,
                 isSelected && 'data-[state=active]:bg-primary text-white'
               )}

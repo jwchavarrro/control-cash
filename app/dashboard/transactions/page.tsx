@@ -9,6 +9,7 @@
 import { useMemo } from 'react'
 
 // Import of components custom
+import { BaseDialog } from '@/components/atomic-design/molecules/dialog/base-dialog'
 import { Header, Tabs } from '@/components/atomic-design/molecules'
 import {
   TransactionsTableIncome,
@@ -20,16 +21,27 @@ import { KEYWORDS } from '@/config'
 import { TAB_TRANSACTIONS_OPTIONS } from '@/components/pages/dashboard/transactions/utils'
 
 // Import of context
+import { useOpenActionDialog } from '@/context/pages/use-open-action-dialog'
 import { useSelectedTabTransactions } from '@/context/pages/transactions/selected-tab-transactions'
+import { useSelectedTransaction } from '@/context/pages/transactions/selected-transaction'
+
+import { useDeleteTransaction } from '@/lib/api/hooks/transactions'
 
 // Import of types
 import type { ENUM_TRANSACTION_TYPE } from '@/lib/api/types'
+import { ENUM_ACTION_TYPE } from '@/app/utils'
 import { ENUM_TRANSACTION_TYPE as TransactionType } from '@/lib/api/types'
 
 export default function TransactionsPage() {
   // Import of context
+  const { open, setOpen, setAction } = useOpenActionDialog()
   const { selectedTabTransactions, setSelectedTabTransactions } =
     useSelectedTabTransactions()
+  const { selectedTransaction } = useSelectedTransaction()
+
+  // Implement of custom hooks
+  const { mutate: deleteTransaction, isPending: isDeleting } =
+    useDeleteTransaction()
 
   /**
    * @description Contenido de los tabs
@@ -42,20 +54,48 @@ export default function TransactionsPage() {
     []
   )
 
+  // Handles
+  const handleOnConfirm = (id: string) => {
+    if (!id) {
+      return
+    }
+
+    deleteTransaction(id, {
+      onSuccess: () => {
+        setOpen(false)
+        setAction(ENUM_ACTION_TYPE.IDLE)
+      },
+    })
+  }
+
   return (
-    <div className="container mx-auto flex flex-col gap-4">
-      <Header
-        title={KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.TRANSACTIONS.TITLE}
-        text="Explore and manage all your transactions in one place, with options to review, edit, and organize efficiently."
+    <>
+      <BaseDialog
+        open={open}
+        setOpen={setOpen}
+        title="Delete Transaction"
+        description="Are you sure you want to delete this transaction?"
+        onCancel={() => {
+          setOpen(false)
+          setAction(ENUM_ACTION_TYPE.IDLE)
+        }}
+        onConfirm={() => handleOnConfirm(selectedTransaction?.id || '')}
+        disabled={isDeleting}
       />
-      <Tabs
-        options={TAB_TRANSACTIONS_OPTIONS}
-        selectedItem={selectedTabTransactions}
-        setSelectedItem={item =>
-          setSelectedTabTransactions(item as ENUM_TRANSACTION_TYPE)
-        }
-        content={tabsContent}
-      />
-    </div>
+      <div className="container mx-auto flex flex-col gap-4">
+        <Header
+          title={KEYWORDS.COMPONENTS.NAVIGATION.SIDEBAR.TRANSACTIONS.TITLE}
+          text="Explore and manage all your transactions in one place, with options to review, edit, and organize efficiently."
+        />
+        <Tabs
+          options={TAB_TRANSACTIONS_OPTIONS}
+          selectedItem={selectedTabTransactions}
+          setSelectedItem={item =>
+            setSelectedTabTransactions(item as ENUM_TRANSACTION_TYPE)
+          }
+          content={tabsContent}
+        />
+      </div>
+    </>
   )
 }

@@ -5,4 +5,4 @@
  */
 
 export * from './selected-tab-transactions'
-export * from './selected-transactions'
+export * from './selected-transaction'
