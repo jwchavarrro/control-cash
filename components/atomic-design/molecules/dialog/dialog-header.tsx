@@ -8,17 +8,16 @@ import {
   DialogHeader as ShadcnDialogHeader,
   DialogTitle,
   DialogDescription,
-} from '@/components/ui/dialog';
-
+} from '@/components/ui/dialog'
 
 export interface DialogHeaderProps {
-  title?: string;
-  description?: string;
+  title?: string
+  description?: string
 }
 
 export const DialogHeader = ({ title, description }: DialogHeaderProps) => {
   // Retornar null si no hay título ni descripción
-  if (!title && !description) return null;
+  if (!title && !description) return null
 
   return (
     <ShadcnDialogHeader>
@@ -30,4 +29,4 @@ export const DialogHeader = ({ title, description }: DialogHeaderProps) => {
       )}
     </ShadcnDialogHeader>
   )
-};
+}

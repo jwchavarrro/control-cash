@@ -27,7 +27,6 @@ import { useSelectedTransaction } from '@/context/pages/transactions/selected-tr
 
 import { useDeleteTransaction } from '@/lib/api/hooks/transactions'
 
-
 // Import of types
 import type { ENUM_TRANSACTION_TYPE } from '@/lib/api/types'
 import { ENUM_ACTION_TYPE } from '@/app/utils'
@@ -41,7 +40,8 @@ export default function TransactionsPage() {
   const { selectedTransaction } = useSelectedTransaction()
 
   // Implement of custom hooks
-  const { mutate: deleteTransaction, isPending: isDeleting } = useDeleteTransaction()
+  const { mutate: deleteTransaction, isPending: isDeleting } =
+    useDeleteTransaction()
 
   /**
    * @description Contenido de los tabs
@@ -53,7 +53,6 @@ export default function TransactionsPage() {
     }),
     []
   )
-
 
   // Handles
   const handleOnConfirm = (id: string) => {

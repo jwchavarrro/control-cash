@@ -1,24 +1,18 @@
-
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { DialogHeader, type DialogHeaderProps } from './dialog-header';
-import { DialogFooter, type DialogFooterProps } from './dialog-footer';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { DialogHeader, type DialogHeaderProps } from './dialog-header'
+import { DialogFooter, type DialogFooterProps } from './dialog-footer'
 
 // Import of utilities
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 export interface BaseDialogProps
-  extends DialogHeaderProps,
-    Omit<DialogFooterProps, 'footer'> {
-  open?: boolean;
-  setOpen?: (open: boolean) => void;
-  trigger?: React.ReactNode;
-  extraClassName?: string;
-  children?: React.ReactNode;
-  footer?: React.ReactNode;
+  extends DialogHeaderProps, Omit<DialogFooterProps, 'footer'> {
+  open?: boolean
+  setOpen?: (open: boolean) => void
+  trigger?: React.ReactNode
+  extraClassName?: string
+  children?: React.ReactNode
+  footer?: React.ReactNode
 }
 
 export const BaseDialog: React.FC<BaseDialogProps> = ({
@@ -59,5 +53,5 @@ export const BaseDialog: React.FC<BaseDialogProps> = ({
         />
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}

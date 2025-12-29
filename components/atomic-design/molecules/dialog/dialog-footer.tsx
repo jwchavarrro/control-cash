@@ -4,17 +4,17 @@
  * @module components/atomic-design/molecules/dialog/dialog-footer
  */
 
-import { memo } from 'react';
-import { DialogFooter as ShadcnDialogFooter } from '@/components/ui/dialog';
+import { memo } from 'react'
+import { DialogFooter as ShadcnDialogFooter } from '@/components/ui/dialog'
 
 // Import of components custom
-import { DialogActions, type DialogActionsProps } from './dialog-actions';
+import { DialogActions, type DialogActionsProps } from './dialog-actions'
 
 // Import of utilities
-import { KEYWORDS } from '@/config';
+import { KEYWORDS } from '@/config'
 
 export interface DialogFooterProps extends DialogActionsProps {
-  footer?: React.ReactNode;
+  footer?: React.ReactNode
 }
 
 export const DialogFooter = memo<DialogFooterProps>(
@@ -52,4 +52,4 @@ export const DialogFooter = memo<DialogFooterProps>(
   }
 )
 
-DialogFooter.displayName = 'DialogFooter';
+DialogFooter.displayName = 'DialogFooter'

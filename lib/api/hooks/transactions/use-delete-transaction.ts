@@ -33,13 +33,13 @@ export function useDeleteTransaction() {
       queryClient.invalidateQueries({
         queryKey: queryKeys.dashboard.summary(userId),
       })
-      // Refetch 
+      // Refetch
       queryClient.refetchQueries({
         queryKey: queryKeys.transactions.all,
       })
       toast.success('Transaction deleted successfully')
     },
-    onError: (error) => {
+    onError: error => {
       toast.error(error?.message || 'Failed to delete transaction')
     },
   })

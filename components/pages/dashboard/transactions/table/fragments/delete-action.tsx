@@ -20,7 +20,7 @@ import { ENUM_ACTION_TYPE } from '@/app/utils'
 export const DeleteAction = ({ row }: { row: Transaction }) => {
   // Import of context
   const { setSelectedTransaction } = useSelectedTransaction()
-  const { setAction,setOpen } = useOpenActionDialog()
+  const { setAction, setOpen } = useOpenActionDialog()
 
   // Handle
   const handleOnClickDelete = () => {
